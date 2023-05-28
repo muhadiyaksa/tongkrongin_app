@@ -1,0 +1,225 @@
+section.header {
+  box-shadow: 0px 2px 15px rgba(112, 112, 112, 0.2);
+  padding: 10px 0px;
+}
+section.header a {
+  background-color: #474747;
+  font-family: "Poppins", sans-serif;
+}
+section.invoice {
+  margin-top: 40px;
+  margin-bottom: 50px;
+}
+section.invoice .bagan-inv {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 0.2fr 0.2fr 0.2fr 1fr 0.4fr;
+  grid-template-areas:
+    "status"
+    "inv"
+    "booking"
+    "detail"
+    "tatacara";
+}
+section.invoice .status {
+  border: 1px solid #70707031;
+  border-radius: 8px;
+  box-sizing: border-box;
+  padding: 20px;
+  box-sizing: border-box;
+  width: 100%;
+  grid-area: status;
+}
+section.invoice .status .table {
+  margin-top: 20px;
+  font-family: "Poppins", sans-serif;
+  font-size: 13px;
+}
+section.invoice .status .table td,
+section.invoice .detail-pesanan .table td,
+section.invoice .tatacara .table td {
+  border-bottom: 0px !important;
+}
+section.invoice .status .table tr td:nth-child(3) {
+  font-weight: 600;
+}
+
+section.invoice .kotak i {
+  color: #6fbd44;
+  font-size: 20px;
+  margin-right: 10px;
+}
+section.invoice .kotak h5 {
+  font-size: 14px;
+  margin: 0;
+  color: #474747;
+  align-self: center;
+}
+
+section.invoice .kotak {
+  font-family: "Poppins", sans-serif;
+  background-color: #e7ffe1;
+  padding: 10px 20px;
+  border-radius: 8px;
+  display: flex;
+}
+
+section.invoice .detail-pesanan {
+  margin-top: 40px;
+  grid-area: detail;
+}
+section.invoice .detail-pesanan img {
+  border-radius: 4px;
+}
+section.invoice .detail-pesanan p {
+  font-family: "Poppins", sans-serif;
+  font-size: 12px;
+}
+section.invoice .detail-pesanan table {
+  font-family: "Poppins", sans-serif;
+  font-size: 13px;
+}
+section.invoice .detail-pesanan table tr td:nth-child(1) {
+  width: 100px;
+}
+
+section.invoice .kode,
+section.invoice .tatacara {
+  border: 1px solid #57575731;
+  border-radius: 8px;
+  box-sizing: border-box;
+  padding: 20px;
+}
+section.invoice .kode {
+  margin-top: 40px;
+  grid-area: inv;
+}
+section.invoice .kodeBooking {
+  border: 1px solid #70707031;
+  border-radius: 8px;
+  box-sizing: border-box;
+  padding: 20px;
+  grid-area: booking;
+  margin-top: 40px;
+}
+section.invoice .kodeBooking h5,
+section.invoice .kodeBooking a {
+  font-family: "Poppins", sans-serif;
+  color: #6fbd44;
+}
+section.invoice .kodeBooking p {
+  margin-top: 20px;
+  font-size: 16px;
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+}
+section.invoice .kodeBooking i {
+  font-size: 28px;
+  font-family: "Poppins", sans-serif;
+}
+section.invoice .kode a,
+section.invoice .kodeBooking a {
+  border: 1px solid #6fbd44;
+  color: #6fbd44;
+}
+section.invoice .kode a:hover,
+section.invoice .kodeBooking a:hover {
+  border: 1px solid #474747;
+  color: #474747;
+}
+section.invoice .kode .row {
+  font-family: "Poppins", sans-serif;
+  align-items: center;
+  margin-top: 20px;
+}
+
+section.invoice .kode .row h5 {
+  color: #6fbd44;
+  font-size: 16px;
+}
+section.invoice .kode .row button {
+  font-size: 15px;
+}
+section.invoice .kode .row .col:nth-child(2) {
+  text-align: start;
+  margin-top: 10px;
+}
+
+section.invoice .tatacara {
+  margin-top: 40px;
+  grid-area: tatacara;
+  padding-bottom: 30px;
+}
+section.invoice .tatacara .table {
+  font-family: "Poppins", sans-serif;
+  font-size: 13px;
+}
+
+@media (min-width: 576px) {
+  section.invoice .kotak i {
+    font-size: 24px;
+  }
+  section.invoice .kotak h5 {
+    font-size: 16px;
+  }
+  section.invoice .status .table {
+    font-size: 15px;
+  }
+  section.invoice .detail-pesanan table {
+    font-size: 14px;
+  }
+  section.invoice .detail-pesanan p {
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+  }
+  section.invoice .detail-pesanan table tr td:nth-child(1) {
+    width: 180px;
+  }
+  section.invoice .kode {
+    margin-top: 40px;
+  }
+  section.invoice .kode .row h5 {
+    font-size: 16px;
+  }
+  section.invoice .kode .row button {
+    font-size: 16px;
+  }
+  section.invoice .kode .row .col:nth-child(2) {
+    text-align: end;
+    margin-top: 0px;
+  }
+  section.invoice .tatacara .table {
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+  }
+}
+@media (min-width: 768px) {
+  section.invoice .bagan-inv {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 190px 220px 0.9fr 0.6fr;
+    grid-template-areas:
+      "status inv"
+      "status booking"
+      "detail tatacara"
+      "detail tatacara";
+    column-gap: 20px;
+  }
+  section.invoice .kode {
+    margin-top: 0px;
+  }
+}
+
+@media (min-width: 992px) {
+  section.invoice .bagan-inv {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 160px 190px 0.9fr 0.6fr;
+    grid-template-areas:
+      "status inv"
+      "status booking"
+      "detail tatacara"
+      "detail tatacara";
+    column-gap: 20px;
+  }
+}

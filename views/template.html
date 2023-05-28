@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- Font Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+    <style>
+      .header-inv {
+        width: 760px;
+        margin: 0 auto;
+        font-family: "Poppins", sans-serif;
+        font-size: 12px;
+        position: relative;
+      }
+      .header-inv p {
+        margin-bottom: 0;
+      }
+      .header-inv span {
+        text-transform: capitalize;
+      }
+      .header-inv .lunas {
+        border: 10px solid #48ff57;
+        width: 500px;
+        padding: 10px;
+        border-radius: 10px;
+        position: absolute;
+        top: 40%;
+        left: 15%;
+        z-index: -99;
+        transform: rotate(-45deg);
+        text-align: center;
+        color: #48ff57;
+        opacity: 0.3;
+      }
+      .header-inv .lunas h1 {
+        margin-bottom: 0;
+        font-size: 60px;
+        margin-top: 0;
+      }
+      .header-inv .cafe {
+        padding: 0px 15px;
+      }
+      .header-inv h5 {
+        font-size: 16px;
+        margin-top: 0;
+      }
+      .header-inv h5:nth-child(1) {
+        color: #0ab318;
+      }
+      .header-inv .harga-kap {
+        display: flex;
+        padding-right: 15px;
+      }
+      .header-inv .harga-kap h5:nth-child(2) {
+        margin-left: auto;
+      }
+      .header-inv table {
+        margin-bottom: 20px;
+        padding: 0px 15px;
+      }
+      .header-inv table tr td {
+        padding: 2px 0px;
+      }
+      .header-inv table tr td:nth-child(1) {
+        width: 140px;
+        font-weight: 600;
+      }
+      .header-inv table tr td:nth-child(2) {
+        width: 10px;
+      }
+      .header-inv ul {
+        list-style: none;
+        border: 1px solid #949494;
+        padding-left: 0;
+        border-radius: 10px;
+        overflow: hidden;
+      }
+      .header-inv li {
+        list-style: none;
+        border-bottom: 1px solid #949494;
+      }
+      .header-inv li.first {
+        background-color: #f8f8f8;
+      }
+      .header-inv li.last {
+        border-bottom: 0px solid #949494;
+      }
+      .header-inv li h5 {
+        padding: 10px 15px;
+        margin-bottom: 0;
+        display: inline-block;
+      }
+      .header-inv .kapasitas {
+        padding: 0px 15px;
+      }
+      .header-inv p.subjudul {
+        font-size: 18px;
+      }
+      .header-inv .kapasitas {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr;
+        grid-template-areas: "tabel tabelDua";
+        column-gap: 10px;
+        margin-bottom: 0;
+      }
+
+      .header-inv .kapasitas table:nth-child(1) {
+        grid-area: tabel;
+      }
+      .header-inv .kapasitas table:nth-child(2) {
+        grid-area: tabelDua;
+      }
+
+      .header-inv .kapasitas h5 {
+        grid-area: harga;
+        justify-self: end;
+      }
+      .header-inv .menu {
+        display: grid;
+        grid-template-columns: 3fr 1fr;
+        grid-template-rows: 1fr;
+        grid-template-areas: "tabel harga";
+        column-gap: 10px;
+        margin-bottom: 0;
+        padding: 0px 15px;
+      }
+      .header-inv .menu table {
+        grid-area: tabel;
+        margin: 0;
+        align-self: center;
+      }
+      .header-inv .menu h5 {
+        grid-area: harga;
+        margin: 0;
+        justify-self: end;
+      }
+      .header-inv .subtotal {
+        text-align: end;
+        padding: 15px;
+      }
+      .header-inv .kotak {
+        background-color: #f3f3f352;
+        border: 1px solid #949494;
+        border-radius: 8px;
+        padding: 10px 30px;
+        text-align: end;
+        color: #0ab318;
+        width: 50%;
+        margin-left: auto;
+      }
+      .header-inv .kotak h5 {
+        display: inline-block;
+        margin-bottom: 0;
+        font-size: 23px;
+      }
+      .header-inv .detail-inv {
+        display: grid;
+        grid-template-columns: 1fr 0.3fr 1fr;
+        grid-template-areas: "first null second";
+        align-items: flex-start;
+        padding: 10px 15px;
+      }
+
+      .header-inv .detail-inv table.first {
+        grid-area: first;
+      }
+
+      .header-inv .detail-inv table.second {
+        grid-area: second;
+      }
+      .header-inv .inv {
+        color: #0ab318;
+      }
+      .header-inv .catatan {
+        color: #474747;
+        margin-top: 20px;
+        margin-bottom: 50px;
+      }
+      .header-inv .catatan p {
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="header-inv">
+      <div class="header">
+        <h1>TONGKRONGIN</h1>
+      </div>
+      <div class="lunas">
+        <h1>SUDAH BAYAR</h1>
+      </div>
+
+      <ul>
+        <li class="first">
+          <h5>KODE INVOICE : {{ formCheckout.kodeInv}}</h5>
+        </li>
+        <li>
+          <h5>Tongkrongin</h5>
+          <h5>Dinyatakan Sebagai Bukti sudah Transfer Ke :</h5>
+          <div class="cafe">
+            <table>
+              <tr>
+                <td><span>Nama Cafe</span></td>
+                <td><span>:</span></td>
+                <td><span> {{ caves.nama }}</span></td>
+              </tr>
+              <tr>
+                <td><span>Alamat</span></td>
+                <td><span>:</span></td>
+                <td><span>{{ caves.alamat }}</span></td>
+              </tr>
+              <tr>
+                <td><span>Kategori</span></td>
+                <td><span>:</span></td>
+                <td><span class="text-capitalize">{{ caves.kategori }}</span></td>
+              </tr>
+            </table>
+          </div>
+        </li>
+        <li>
+          <h5>Detail Transaksi</h5>
+          <div class="kapasitas">
+            <table>
+              <tr>
+                <td><span>Tanggal Pembayaran</span></td>
+                <td><span>:</span></td>
+                <td><span>{{ formCheckout.tanggalBayar }}</span></td>
+              </tr>
+              <tr>
+                <td><span>Jam Pembayaran</span></td>
+                <td><span>:</span></td>
+                <td><span>{{ formCheckout.jamBayar }} WIB</span></td>
+              </tr>
+              <tr>
+                <td><span>Nama Bank</span></td>
+                <td><span>:</span></td>
+                <td><span class="text-capitalize">{{ formCheckout.namaBank }} </span></td>
+              </tr>
+              <tr>
+                <td><span>Nama Rekening</span></td>
+                <td><span>:</span></td>
+                <td><span>{{ formCheckout.namaRekening }}</span></td>
+              </tr>
+              <tr>
+                <td><span>Nomor Rekening</span></td>
+                <td><span>:</span></td>
+                <td><span>{{ formCheckout.nomorRekening }}</span></td>
+              </tr>
+            </table>
+            <table>
+              <tr>
+                <td><span>Tanggal Pemesanan</span></td>
+                <td><span>:</span></td>
+                <td>
+                  <span class="text-capitalize">{{ formCheckout.tanggalPesan }}</span>
+                </td>
+              </tr>
+              <tr>
+                <td><span>Jam Pemesanan</span></td>
+                <td><span>:</span></td>
+                <td>
+                  <span class="text-capitalize">{{ formCheckout.jamPesan }}WIB</span>
+                </td>
+              </tr>
+
+              <tr>
+                <td><span>Atas Nama</span></td>
+                <td><span>:</span></td>
+                <td>
+                  <span class="text-capitalize">{{ formCapacities.namaPemesan }}</span>
+                </td>
+              </tr>
+              <tr>
+                <td><span>Kapasitas</span></td>
+                <td><span>:</span></td>
+                <td>
+                  <span>{{ formCapacities.kapKategori }}</span>
+                  Orang
+                </td>
+              </tr>
+            </table>
+          </div>
+        </li>
+        <li>
+          <div class="harga-kap">
+            <h5>Kapasitas</h5>
+            <h5>Rp. {{ formCapacities.harga }}</h5>
+          </div>
+        </li>
+        <li>
+          <h5>Menu</h5>
+          {{#each formFoods}}
+          <div class="menu">
+            <table>
+              <tr>
+                <td><span>Nama Menu</span></td>
+                <td><span>:</span></td>
+                <td>
+                  <span>{{ this.namaMenu }}</span>
+                </td>
+                <td>
+                  <span>{{ this.quantity}} x</span>
+                </td>
+                <td>
+                  <span>Rp. {{this.hargaMenu}}</span>
+                </td>
+              </tr>
+            </table>
+            <h5>Rp. {{ this.harga }}</h5>
+          </div>
+          {{/each}}
+        </li>
+        <li class="last">
+          <div class="subtotal">
+            <h5>Subtotal</h5>
+            <h5>Rp. {{formCheckout.total}}</h5>
+          </div>
+        </li>
+      </ul>
+      <div class="kotak">
+        <h5>Total Bayar :</h5>
+        <h5>Rp. {{formCheckout.total}}</h5>
+      </div>
+
+      <div class="catatan">
+        <p>*Pembayaran Sudah Termasuk Pajak</p>
+        <p>*Invoice Ini Bukti Bahwa Kamu Sudah Upload Pembayaran</p>
+        <p>*Invoice Dapat Dibatalkan Sewaktu-waktu apabila kamu mengupload Bukti yang tidak Valid</p>
+      </div>
+    </section>
+  </body>
+</html>

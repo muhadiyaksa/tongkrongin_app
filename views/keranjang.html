@@ -1,0 +1,231 @@
+<section class="keranjang">
+  <div class="container">
+    <div class="row">
+      <div class="col-5">
+        <h2>Detail Pesanan</h2>
+      </div>
+      <div class="col-7 text-end tambah-pesanan">
+        <? if(capacities) { ?>
+        <a href="/cafe/food/<?= capacities.idCafe ?>" class="btn text-light px-4">Tambah Pesanan</a>
+        <? } else {?>
+        <a href="/cafe" class="btn text-light px-4">Tambah Pesanan</a>
+        <? } ?>
+      </div>
+    </div>
+    <div class="row mt-4 judul">
+      <div class="col-1"></div>
+      <div class="col-6">Pesanan</div>
+      <div class="col-2">Jumlah</div>
+      <div class="col-2">Harga</div>
+      <div class="col-1"></div>
+    </div>
+    <div class="kadaluarsa">
+      <div class="alert alert-danger">
+        <div class="row">
+          <div class="col-1">
+            <h5 class="m-0"><i class="bi bi-exclamation-circle-fill me-2"></i></h5>
+          </div>
+          <div class="col-11 text-start">Ups! Pesanan kamu sudah kadaluarsa , Hapus Atau Ganti pesananmu sekarang!</div>
+        </div>
+      </div>
+    </div>
+    <input type="hidden" value="<?= (capacities) ? capacities.kapKategori : "kosong" ?>" class="isi-keranjang" />
+    <? if(!capacities) { ?>
+    <div class="kolomgrid mt-4"></div>
+
+    <? } else {?>
+    <div class="kolomgrid mt-4 tempat">
+      <div class="checkbox">
+        <input type="checkbox" class="form-check-input check-capacity" value="<?= capacities.harga ?>" />
+      </div>
+      <div class="pesanan">
+        <div class="row">
+          <div class="col-3 text-center my-auto">
+            <img src="/icon/conversation.png" alt="kapasitas" class="img-fluid" />
+          </div>
+          <div class="col-9">
+            <h4>
+              Kapasitas
+              <?= capacities.kapKategori ?>
+              Orang
+            </h4>
+            <p>
+              Loc.
+              <?= (caves) ? caves.nama : '' ?>
+            </p>
+            <input type="hidden" class="waktu-pesan" value="<?= (formCapacities) ? formCapacities.waktu : '' ?>" />
+            <input type="hidden" class="jam-pesan" value="<?= (formCapacities) ? formCapacities.jamPesan : '' ?>" />
+            <button class="detail-kapasitas rounded" data-bs-toggle="modal" data-bs-target="#modalDetail">Detail</button>
+          </div>
+        </div>
+      </div>
+      <div class="jumlah"><h4>Qty : 1</h4></div>
+      <div class="harga">
+        <input type="hidden" value="<?= capacities.harga ?>" class="value-harga-tempat" />
+        <h4>
+          Rp.
+          <?= capacities.harga ?>
+        </h4>
+      </div>
+      <div class="hapus"><img src="/icon/trash.png" alt="" data-bs-toggle="modal" data-bs-target="#confirmDelete" /></div>
+    </div>
+    <? } ?>
+
+    <? if(!formFoods) { ?>
+    <div class="kolomgrid mt-4">
+      <!-- <p>Ups Kamu Belum Memesan Apapun</p> -->
+    </div>
+    <? } else {?>
+    <div class="makanan">
+      <h3 class="detailjudul">Detail Pesanan Makanan</h3>
+      <? formFoods.forEach((el,i)=>{ ?>
+      <? foods.forEach(food=>{ ?>
+      <? if(el.idMenu == food.idMenu ){ ?>
+      <div class="kolomgrid food">
+        <div class="checkbox">
+          <input type="checkbox" class="form-check-input check-for-price" value="<?= [el.idCafe , el.idMenu , el.harga , i] ?>" />
+        </div>
+        <div class="pesanan">
+          <div class="row">
+            <div class="col-3 text-center my-auto">
+              <div class="image">
+                <img src="/img/food/<?= food.gambar ?>" alt="food" class="img-fluid" />
+              </div>
+            </div>
+            <div class="col-9">
+              <h4>
+                <?= food.namaMenu ?>
+              </h4>
+              <p>
+                <?=  food.deskripsi ?>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="harga">
+          <input type="hidden" value="<?= el.harga ?>" class="value-harga" />
+          <h4>
+            <?= el.harga?>
+          </h4>
+        </div>
+        <div class="quantity-cart d-flex">
+          <form method="post" action="/cart/qtymin?_method=PUT">
+            <input type="hidden" name="iduser" value="<?=  dataUser.id ?>" />
+            <input type="hidden" name="idmenu" value="<?=  food.idMenu ?>" />
+            <input type="hidden" name="idcafe" value="<?=  food.idCafe ?>" />
+            <button type="submit" class="btn p-0 fs-3 qty-min"><i class="bi bi-dash-square kurang-cart" number="<?= i?>"></i></button>
+          </form>
+          <span class="fs-3 px-3"><?= el.quantity ?></span>
+          <input type="hidden" class="quantity-food" value="<?= el.quantity ?>" />
+          <form method="post" action="/cart/qtyplus?_method=PUT">
+            <input type="hidden" name="iduser" value="<?=  dataUser.id ?>" />
+            <input type="hidden" name="idmenu" value="<?=  food.idMenu ?>" />
+            <input type="hidden" name="idcafe" value="<?=  food.idCafe ?>" />
+            <button type="submit" class="btn p-0 fs-3" id="qtyPlus"><i class="bi bi-plus-square kurang-cart" number="<?= i?>"></i></button>
+          </form>
+        </div>
+        <div class="hapus">
+          <form action="/cart/food?_method=DELETE" method="post" class="d-inline">
+            <input type="hidden" name="iduser" value="<?=  dataUser.id ?>" />
+            <input type="hidden" name="idmenu" value="<?=  food.idMenu ?>" />
+            <input type="hidden" name="idcafe" value="<?=  food.idCafe ?>" />
+            <button type="submit" class="btn p-0"><img src="/icon/trash.png" alt="Hapus" class="img-fluid" /></button>
+          </form>
+        </div>
+      </div>
+      <? } ?>
+      <? }) ?>
+      <? }) ?>
+    </div>
+    <? } ?>
+    <div class="garis border-1 border-bottom"></div>
+    <form action="/cart" method="post">
+      <div class="catatan">
+        <input type="text" class="form-input w-100" name="catatan" placeholder="Catatan untuk Pesanan kamu" />
+      </div>
+      <div class="total text-end mt-4">
+        <input type="hidden" name="iduser" value="<?= dataUser.id ?>" />
+        <input type="hidden" name="idcafe" value="<?= (formCapacities) ? formCapacities.idCafe : ''?>" />
+        <input type="hidden" class="idmenu-array" name="idmenu" value="" />
+        <input type="hidden" class="total-harga" name="total" value="" />
+        <input type="hidden" class="total-harga" name="waktu" value="<?= (formCapacities) ? formCapacities.waktu : '' ?>" />
+        <input type="hidden" class="total-harga" name="jamPesan" value="<?= (formCapacities) ? formCapacities.jamPesan : ''?>" />
+
+        <h3>Total : Rp. <span>-</span></h3>
+        <input class="btn btn-dark text-light px-3 mt-3 bayar-keranjang" type="submit" value="Bayar Sekarang" disabled />
+        <!-- <a href="/pay">Bayar</a> -->
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- Modal -->
+<div class="modal fade" id="confirmDelete" tabindex="-1" aria-labelledby="confirmDeleteLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body text-center my-0">
+        <h1><i class="bi bi-exclamation-circle"></i></h1>
+        <h4>Apakah Kamu Yakin?</h4>
+        <p class="mb-5">Apabila Kapasitas Tempat ini dihapus , maka semua Menu makanan yang sudah dipilih akan juga terhapus</p>
+        <form action="/cart?_method=DELETE" method="post" class="d-inline">
+          <input type="hidden" name="iduser" value="<?=  dataUser.id ?>" />
+          <input type="submit" class="btn btn-danger" value="Hapus" />
+        </form>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modalDetail" tabindex="-1" aria-labelledby="modalDetailLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalDetailLabel">Detail Pesanan Kapasitas</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <table class="table">
+          <tbody>
+            <tr>
+              <th scope="row">Cafe</th>
+              <td>:</td>
+              <td><?= (caves) ? caves.nama : ''?></td>
+            </tr>
+            <tr>
+              <th scope="row">Alamat</th>
+              <td>:</td>
+              <td><?= (caves) ? caves.alamat : ''?></td>
+            </tr>
+            <tr class="text-capitalize">
+              <th scope="row">Kategori</th>
+              <td>:</td>
+              <td><?= (caves) ? caves.kategori : ''?></td>
+            </tr>
+            <tr class="text-capitalize">
+              <th scope="row">Atas Nama</th>
+              <td>:</td>
+              <td><?= (formCapacities) ? formCapacities.namaPemesan : ''?></td>
+            </tr>
+            <tr>
+              <th scope="row">Tanggal Pesan</th>
+              <td>:</td>
+              <td>
+                <span class="text-capitalize"><?= (formCapacities) ? formCapacities.tanggalPesan : '' ?></span>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">Jam Pesan</th>
+              <td>:</td>
+              <td>
+                <?= (formCapacities) ? formCapacities.jamPesan : ''?>
+                WIB
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

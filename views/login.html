@@ -1,0 +1,89 @@
+<section class="login">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 mx-auto konten">
+        <h2 class="text-center fw-bold">Tongkrongin</h2>
+        <? if (messages.error) { ?>
+        <div class="alert alert-danger" role="alert">
+          <? if (messages.error.toString() == 'Missing credentials') {?>
+          <?= 'Form Wajib Diisi' ?>
+          <?} else {?>
+          <?= messages.error; ?>
+          <?}?>
+        </div>
+        <? } ?>
+
+        <? if (typeof errors != 'undefined') { ?>
+        <div class="alert alert-danger" role="alert">
+          <ul>
+            <? errors.forEach(error=>{ ?>
+            <li>
+              <?= error.msg ?>
+            </li>
+            <? }) ?>
+          </ul>
+        </div>
+        <? } ?>
+
+        <? if( msg.length !== 0) {?>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+          <?= msg  ?>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <? } else if(msg == undefined) {?>
+        <span>yayay</span>
+        <? }?>
+
+        <div class="kotak text-center">
+          <img src="/icon/googleIcon.svg" alt="googleIcon" />
+          <span>Sign In With Google</span>
+        </div>
+        <div class="atau">
+          <div class="garis"></div>
+          <span>Atau</span>
+          <div class="garis"></div>
+        </div>
+
+        <form method="post" action="/login">
+          <div class="mb-3 form">
+            <label for="email" class="form-label">Email address</label>
+            <input type="email" class="form-control ps-5" id="email" name="email" placeholder="Masukan Email" aria-describedby="emailHelp" />
+            <i class="bi bi-person-square"></i>
+          </div>
+          <div class="mb-3 form">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control ps-5" id="password" name="password" placeholder="Password" />
+            <i class="bi bi-lock"></i>
+          </div>
+          <div class="row">
+            <div class="col-md form-check ms-3">
+              <input type="checkbox" class="form-check-input" id="exampleCheck1" />
+              <label class="form-check-label" for="exampleCheck1">Ingatkan Saya</label>
+            </div>
+            <div class="col-md text-end">
+              <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal">Lupa Password?</a>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-light w-100 fs-5 fw-bold mt-4">Masuk</button>
+          <p class="text-center mt-3">Belum Punya Akun? <a href="/regist">Daftar Disini</a></p>
+          <p class="text-center"><a href="/">Kembali Ke Menu</a></p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Lupa Password?</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body booking">
+        <p>Siapa Suruh Lupa?</p>
+      </div>
+    </div>
+  </div>
+</div>

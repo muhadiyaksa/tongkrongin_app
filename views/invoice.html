@@ -1,0 +1,249 @@
+<? if(!formCheckout) {?>
+  <section class="wrong">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <img src="/img/wrong.png" alt="Wrong" class="img-fluid" />
+          <a href=""></a>
+        </div>
+        <div class="col-md-6 my-auto">
+          <h1 class="fw-bold text-secondary">Ups!, Data Invoice Tidak Valid.</h1>
+          <a href="/user/<?= dataUser.id ?>" class="fw-bold text-secondary">Kembali Ke Halaman</a>.
+        </div>
+      </div>
+    </div>
+  </section>
+  <? } else { ?>
+
+<section class="header text-end">
+  <div class="container">
+    <a href="/user/<?= dataUser.id ?>" class="btn px-5 text-light">Kembali</a>
+  </div>
+</section>
+
+<section class="invoice">
+  <div class="container">
+      <div class="bagan-inv">
+
+     
+        <div class="status">
+          <h2>Status Pemesanan</h2>
+          <div class="kotak">
+            <i class="bi bi-check-circle-fill"></i>
+            <h5 class="d-inline-block">Proses Pembayaran telah berhasil dilakukan</span></h5>
+          </div>
+          <table class="table table-sm">
+            <tr>
+              <td><span>Nama Bank</span></td>
+              <td><span>:</span></td>
+              <td><span class="text-capitalize"> <?= formCheckout.namaBank ?> </span></td>
+            </tr>
+            <tr>
+              <td><span>Nama Rekening</span></td>
+              <td><span>:</span></td>
+              <td><span><?= formCheckout.namaRekening ?></span></td>
+            </tr>
+            <tr>
+              <td><span>Nomor Rekening</span></td>
+              <td><span>:</span></td>
+              <td><span><?= formCheckout.nomorRekening ?></span></td>
+            </tr>
+            <tr>
+              <td><span>Tanggal Pembayaran</span></td>
+              <td><span>:</span></td>
+              <td><span><?= formCheckout.tanggalBayar ?></span></td>
+            </tr>
+            <tr>
+              <td><span>Jam Pembayaran</span></td>
+              <td><span>:</span></td>
+              <td><span><?= formCheckout.jamBayar ?> WIB</span></td>
+            </tr>
+            <tr>
+              <td><span>Total Pembayaran</span></td>
+              <td><span>:</span></td>
+              <input type="hidden" class="price-checkout" value="<?= formCheckout.total ?>">
+              <td><span class="price-checkout-loc fw-bold"></span></td>
+            </tr>
+          </table>
+        </div>
+
+        <div class="detail-pesanan">
+          <ul class="list-group">
+            <li class="list-group-item">
+              <h2>Detail Transaksi</h2>
+            </li>
+            <li class="list-group-item">
+              <h4 class="subjudul">Tempat</h4>
+              <div class="kapasitas">
+                <div class="row">
+                  <div class="col-3">
+                    <img src="/img/cafe/<?= caves.gambar[1].namaGambar ?>" alt="Cafe" class="img-fluid cafe mt-2" />
+                  </div>
+                  <div class="col">
+                    <h3><?= caves.nama ?></h3>
+                    <p><?= caves.alamat ?></p>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <h4 class="subjudul">Kapasitas</h4>
+              <div class="kapasitas">
+                <div class="row">
+                  <div class="col-3">
+                    <img src="/icon/conversation.png" alt="Capacity" class="img-fluid mt-2" />
+                  </div>
+                  <div class="col">
+              <table class="table table-sm" >
+                <tr>
+                  <td><span>Atas Nama</span></td>
+                  <td><span>:</span></td>
+                  <td><span class="text-capitalize"><?= formCapacities.namaPemesan ?></span></td>
+                </tr>
+                <tr>
+                  <td><span>Kapasitas</span></td>
+                  <td><span>:</span></td>
+                  <td><span></span><?= formCapacities.kapKategori ?> Orang</td>
+                </tr>
+                <tr>
+                  <td><span>Jam Pemesanan</span></td>
+                  <td><span>:</span></td>
+                  <td><span class="text-capitalize"><?= formCapacities.jamPesan ?> WIB</span></td>
+                </tr>
+                <tr>
+                  <td><span>Tanggal Pemesanan</span></td>
+                  <td><span>:</span></td>
+                  <td><span class="text-capitalize"><?= formCapacities.tanggalPesan ?></span></td>
+                </tr>
+               
+              </table>
+              </div>
+              </div>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <h4 class="subjudul">Makanan</h4>
+             
+              <? formFoods.forEach((el,i)=>{ ?>
+                <div class="kapasitas">
+                  <div class="row">
+                    <div class="col-3">
+                      <img src="/img/food/<?= foods[i] ? foods[i].gambar : '' ?>" alt="Food" class="img-fluid mt-2" />
+                    </div>
+                    <div class="col">
+                      <table class="table table-sm">
+                        <tr>
+                          <td>Menu</td>
+                          <td>:</td>
+                          <td><span> <?= foods[i] ? foods[i].namaMenu : '' ?> </span></td>
+                        </tr>
+                        <tr>
+                          <td>Jumlah</td>
+                          <td>:</td>
+                          <td><span><?= el.quantity ?></span></td>
+                        </tr>
+                        <tr>
+                          <td>Harga</td>
+                          <td>:</td>
+                          <td><span>Rp. <?= el.harga ?></span></td>
+                        </tr>
+                       
+                      </table>
+                    </div>
+                  </div>
+                </div>  
+                <? }) ?>
+            </li>
+            <li class="list-group-item">
+              <h4 class="subjudul">Catatan</h4>
+              <input type="text" class="form-control mb-2" value="<?= formCheckout.catatan ?>" >
+            </li>
+        </div>
+     
+        
+
+        <? if(formCheckout.kodeBooking){ ?>
+          <div class="kodeBooking">
+            <h2 >Kode Booking</h2>
+  
+            <div class="row mt-4">
+              <div class="col">
+                <h5 class="m-0"><?= formCheckout.kodeBooking ?></h5>
+              </div>
+              <div class="col  text-end">
+                <a href="/docs-booking/<?= filenameBooking ?>"  class="btn btn-light px-3 " download >Download</a>
+              </div>
+            </div>
+          </div>
+        <? }else{ ?>
+          <div class="kodeBooking">
+            <h2 >Kode Booking</h2>
+  
+            <div class="row">
+              <div class="col"> 
+                <table>
+                  <tr>
+                    <td>
+                      <i class="bi bi-hourglass-split me-3"></i>
+                    </td>
+                    <td>
+                      <p>Kode Booking Mu sedang tahap proses, tunggu beberapa saat</p>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+        <? } ?>
+        
+        <div class="kode">
+          <h2 >Kode Invoice</h2>
+
+          <div class="row">
+            <div class="col">
+              <h5 class="m-0"><?= formCheckout.kodeInv.split('_').join('/') ?></h5>
+            </div>
+            <div class="col">
+              <a href="/docs/<?= filename ?>"  class="btn btn-light px-3 " download >Download</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="tatacara">
+          <h2>Tata Cara Konfirmasi</h2>
+          <table class="table">
+            <tr>
+              <td>1.</td>
+              <td>Tunggu konfirmasi admin untuk mendapatkan kode boking <strong>(contoh : YWQH8172)</strong> </td>
+            </tr>
+            <tr>
+              <td>2.</td>
+              <td>Kode boking didaptkan setelah dilakukan konfirmasi oleh admin dalam kurung waktu <strong>10 - 20 menit</strong> </td>
+            </tr>
+            <tr>
+              <td>3.</td>
+              <td>Kode boking dapat dilihat pada halaman <strong> notifikasi </strong></td>
+            </tr>
+            <tr>
+              <td>4.</td>
+              <td>Simpan kode invoice sebagai bukti kamu telah melakukan pembayaran</td>
+            </tr>
+            <tr>
+              <td>5.</td>
+              <td>Datang ke cafe yang dituju maksimal keterlambatan <strong>15 menit</strong> , apabila terlambat maka dapat melakukan proses refund apabila tempat yang disediakan sudah Penuh. </td>
+            </tr>
+            <tr>
+              <td>6.</td>
+              <td>Tunjukan <strong>kode boking </strong> yang anda dapat untuk melakukan verifikasi pemesanan di tempat sesuai waktu yang anda pesan</td>
+            </tr>
+            <tr>
+              <td>7.</td>
+              <td>Selesai</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+</section>
+    
+<? } ?>

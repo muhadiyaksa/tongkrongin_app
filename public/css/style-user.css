@@ -1,0 +1,581 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.error-handling-area {
+  display: none;
+}
+section.user-profile {
+  margin-top: 30px;
+  color: #4f4f4f;
+}
+section.user-profile a {
+  text-decoration: none;
+  color: #4f4f4f;
+}
+section.user-profile .logout {
+  display: none;
+}
+section.user-profile .user-settings {
+  display: block;
+  font-family: "Poppins", sans-serif;
+  background-color: rgba(112, 112, 112, 0.05);
+  padding-top: 10px;
+  padding-bottom: 30px;
+}
+section.user-profile .user-settings .akun {
+  background-color: white;
+  border-radius: 8px;
+  padding: 10px;
+}
+section.user-profile .user-settings h2 {
+  font-family: "Neucha";
+  font-weight: 600;
+}
+section.user-profile .user-settings table tr td:nth-child(1) {
+  width: 40px;
+}
+
+section.user-profile h2 {
+  margin-bottom: 20px;
+}
+section.user-profile .identitas {
+  align-items: center;
+  padding: 0 15px;
+  margin-bottom: 30px;
+}
+
+section.user-profile .identitas h3 {
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+}
+section.user-profile .identitas h5 {
+  font-family: "Poppins", sans-serif;
+  font-size: 15px;
+}
+section.user-profile .button {
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  display: none;
+}
+section.user-profile button.edit {
+  margin-top: 20px;
+  padding: 2px 25px;
+  background-color: #4f4f4f;
+  color: white;
+  font-weight: 500;
+  margin-right: 20px;
+}
+section.riwayat {
+  color: #4f4f4f;
+  /* margin-top: 50px; */
+  /* padding-top: 30px; */
+  margin-bottom: 50px;
+}
+section.riwayat h2 {
+  /* border-top: 2px solid rgba(112, 112, 112, 0.3); */
+  padding-top: 30px;
+}
+section.riwayat .riwayat-null {
+  background-color: rgba(112, 112, 112, 0.05);
+  border: 1px solid rgba(112, 112, 112, 0.3);
+  font-size: 14px;
+  color: #4f4f4f;
+  padding: 25px 10px;
+  text-align: center;
+  border-radius: 8px;
+  font-family: "Poppins", sans-serif;
+}
+section.riwayat .riwayat-user {
+  display: grid;
+  background-color: rgba(112, 112, 112, 0.05);
+  border: 1px solid rgba(112, 112, 112, 0.3);
+  border-radius: 8px;
+  padding: 15px 10px;
+  font-family: "Poppins", sans-serif;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 0.2fr;
+  grid-template-areas:
+    "image nama nama"
+    "tanggal tanggal tanggal";
+  margin-top: 20px;
+  column-gap: 10px;
+  row-gap: 15px;
+  position: relative;
+}
+section.riwayat .riwayat-user .overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  display: none;
+}
+section.riwayat .riwayat-user h3 {
+  font-family: "Neucha";
+  font-weight: 600;
+}
+section.riwayat .riwayat-user p {
+  font-size: 14px;
+  margin-bottom: 0;
+  color: #acacac;
+}
+section.riwayat .riwayat-user .image {
+  grid-area: image;
+  height: 110px;
+  width: auto;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border-radius: 8px;
+  border: 1px solid #b8b8b8;
+}
+section.riwayat .riwayat-user .image img {
+  width: 100%;
+  height: auto;
+}
+
+section.riwayat .riwayat-user .nama {
+  grid-area: nama;
+}
+section.riwayat .riwayat-user .nama .alamat {
+  display: none;
+}
+section.riwayat .riwayat-user .nama .kategori {
+  display: block;
+  text-transform: capitalize;
+  font-weight: 300;
+  font-size: 13px;
+
+  color: #383838;
+  padding: 3px 2px;
+  border-radius: 5px;
+}
+section.riwayat .riwayat-user .nama p {
+  font-size: 13px;
+}
+section.riwayat .riwayat-user .tanggal {
+  grid-area: tanggal;
+  text-align: start;
+  position: relative;
+}
+section.riwayat .riwayat-user .tanggal h5 {
+  font-size: 14px;
+  margin-bottom: 0;
+}
+section.riwayat .riwayat-user .tanggal p {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+/* USER UPDATE */
+section.user-update,
+section.user-password {
+  color: #4f4f4f;
+  margin-top: 15px;
+  margin-bottom: 50px;
+}
+section.user-update a,
+section.user-password a {
+  text-decoration: none;
+  color: #4f4f4f;
+}
+section.user-update .simpan,
+section.user-password .simpan {
+  text-align: end;
+}
+section.user-update .simpan button,
+section.user-password .simpan button {
+  width: 100%;
+}
+section.user-update label,
+section.user-password label {
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+}
+section.user-update .nama {
+  align-self: flex-end;
+}
+section.user-update label span {
+  color: red;
+  font-weight: 400;
+}
+section.user-update .identitas {
+  align-items: center;
+}
+section.user-update .identitas .image,
+section.user-profile .identitas .image {
+  height: 70px;
+  width: 70px;
+  border-radius: 50%;
+  background-color: #f1f1f1;
+  overflow: hidden;
+  display: flex;
+  position: relative;
+  align-items: center;
+}
+section.user-update .identitas .image img,
+section.user-profile .identitas .image img {
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+section.user-update input,
+section.user-update select,
+section.user-password input {
+  color: #4f4f4f;
+  width: 100%;
+  margin-bottom: 13px;
+  margin-top: 5px;
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: 1px solid rgba(112, 112, 112, 0.3);
+  padding-right: 30px;
+  background-color: white;
+  font-family: "Poppins", sans-serif;
+}
+section.user-update .input-file {
+  border: 0px;
+}
+section.user-update .input-file::-webkit-file-upload-button {
+  display: none;
+}
+section.user-update .input-file::before {
+  content: "Ganti Foto Profil";
+  display: inline-block;
+  background-color: #f1f1f1;
+  border: 1px solid rgba(112, 112, 112, 0.3);
+  border-radius: 8px;
+  padding: 5px 8px;
+  margin-right: 20px;
+  outline: none;
+  white-space: nowrap;
+  cursor: pointer;
+  font-weight: 500;
+}
+section.user-update select option {
+  width: 90%;
+  border: 1px solid #acacac;
+  outline: 0;
+}
+section.user-update .form-update {
+  display: grid;
+  row-gap: 5px;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "identitas "
+    "nama"
+    "email"
+    "notelp"
+    "jeniskelamin"
+    "kota";
+  grid-template-rows: 1fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr;
+}
+section.user-update .form-update input,
+section.user-password input {
+  font-size: 15px;
+  transition: 0.3s;
+}
+section.user-update .form-update input:focus,
+section.user-password input:focus {
+  border: 1px solid #383838;
+  outline: none;
+}
+section.user-update .form-update button {
+  background-color: #4f4f4f;
+  color: white;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+}
+
+section.user-update .form-update .identitas {
+  grid-area: identitas;
+  background-color: #f7f7f7;
+  padding: 15px 20px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+section.user-update .form-update .nama {
+  grid-area: nama;
+}
+section.user-update .form-update .email {
+  grid-area: email;
+}
+section.user-update .form-update .email input {
+  background-color: #f1f1f1;
+}
+section.user-update .form-update .notelp {
+  grid-area: notelp;
+}
+section.user-update .form-update .jeniskelamin {
+  grid-area: jeniskelamin;
+}
+section.user-update .form-update .kota {
+  grid-area: kota;
+}
+section.user-update .simpan button,
+section.user-password .simpan button {
+  background-color: #4f4f4f;
+  color: white;
+  font-size: 14px;
+  font-family: "Poppins", sans-serif;
+}
+
+/* USER PASSWORD  */
+section.user-password h2 {
+  margin-bottom: 30px;
+}
+section.user-password .eye {
+  position: relative;
+}
+section.user-password .eye img {
+  position: absolute;
+  bottom: 24px;
+  right: 25px;
+}
+
+/* MODAL STYLE */
+
+.modal .konten-upload {
+  border: 2px dashed #777777;
+  text-align: center;
+  padding: 10px;
+  border-radius: 8px;
+  position: relative;
+}
+.modal .konten-upload .hasil-file {
+  display: none;
+}
+.modal .konten-upload.active {
+  border: 2px solid #777777;
+  background-color: #f7f7f7;
+}
+
+.modal .konten-upload p {
+  padding: 0px 30px;
+  color: #808080;
+  font-size: 13px;
+}
+.modal .konten-upload h2 {
+  margin-top: 20px;
+}
+.modal .konten-upload .hasil-file {
+  display: flex;
+  align-items: center;
+}
+.modal .notif {
+  margin-top: 15px;
+  font-size: 13px;
+}
+.modal label {
+  margin-bottom: 25px;
+  margin-top: 10px;
+  font-size: 13px;
+}
+.modal label,
+.modal .kirim input {
+  cursor: pointer;
+  background-color: #4f4f4f;
+  padding: 5px 30px;
+  color: white;
+  border-radius: 4px;
+  border: none;
+}
+.modal .kirim {
+  text-align: center;
+  margin-top: 20px;
+  position: relative;
+}
+.overlay-upload {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.modal .upload-photo,
+.modal .upload-photo:focus {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  cursor: pointer;
+  border: 1px solid blue;
+}
+.modal .booking {
+  text-align: center;
+}
+.modal .booking a {
+  color: #4f4f4f;
+}
+.modal .booking i {
+  font-size: 42px;
+  color: #4f4f4f;
+}
+@media (min-width: 768px) {
+  section.user-update .form-update .identitas {
+    background-color: white;
+    padding: 0px;
+  }
+  section.user-update .simpan button {
+    font-size: 18px;
+  }
+
+  section.user-profile .logout {
+    display: block;
+  }
+  section.user-profile .user-settings {
+    display: none;
+  }
+  section.user-profile .button {
+    display: block;
+  }
+  section.riwayat .riwayat-null {
+    font-size: 22px;
+  }
+  section.riwayat .riwayat-user {
+    grid-template-columns: 1fr 3fr 2fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: "image nama tanggal";
+    column-gap: 10px;
+  }
+  section.riwayat .riwayat-user .nama .alamat {
+    display: block;
+  }
+  section.riwayat .riwayat-user .nama .kategori {
+    display: none;
+  }
+  section.riwayat .riwayat-user .tanggal {
+    text-align: end;
+  }
+  section.riwayat .riwayat-user .tanggal p {
+    top: unset;
+    bottom: 0;
+    right: 0;
+    font-size: 14px;
+    font-weight: 300;
+  }
+  section.riwayat .riwayat-user .tanggal h5 {
+    font-size: 18px;
+    margin-bottom: 0;
+  }
+  section.user-update .identitas .image,
+  section.user-profile .identitas .image {
+    height: 120px;
+    width: 120px;
+    border: 1px solid #adadad;
+  }
+  section.riwayat .riwayat-user .overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(206, 206, 206, 0);
+    transition: 0.3s;
+    overflow: hidden;
+  }
+  section.riwayat .riwayat-user .overlay a {
+    text-decoration: none;
+    color: white;
+    position: absolute;
+    top: -50px;
+    transition: 0.3s;
+    background-color: #00c431;
+    padding: 5px 30px;
+    display: inline-block;
+    border-radius: 8px;
+    border: 0px solid;
+  }
+  section.riwayat .riwayat-user .overlay a {
+    font-size: 16px;
+  }
+  section.riwayat .riwayat-user .belumbayar a {
+    font-size: 18px;
+    text-decoration: none;
+    color: white;
+    position: absolute;
+    top: -50px;
+    transition: 0.3s;
+    background-color: #ff6a14;
+    padding: 5px 30px;
+    right: 30%;
+    left: 15%;
+    border-radius: 8px;
+  }
+  section.riwayat .riwayat-user .overlay:hover {
+    background-color: rgba(206, 206, 206, 0.4);
+  }
+  section.riwayat .riwayat-user .overlay:hover a {
+    top: 35%;
+  }
+}
+
+@media (min-width: 992px) {
+  section.user-profile .button {
+    align-self: center;
+  }
+  section.user-profile button.edit {
+    font-size: 20px;
+    padding: 5px 30px;
+  }
+  section.riwayat h2,
+  section.user-profile h2 {
+    text-align: start;
+  }
+  section.riwayat .riwayat-user p {
+    font-size: 16px;
+  }
+
+  section.user-update .simpan button,
+  section.user-password .simpan button {
+    margin-top: 30px;
+    width: 20%;
+  }
+  section.user-update label {
+    font-size: 18px;
+  }
+  section.user-update input {
+    font-size: 18px;
+  }
+  section.user-update .form-update {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "identitas nama"
+      "email notelp"
+      "jeniskelamin kota";
+    grid-template-rows: 1fr 1fr 1fr;
+    column-gap: 20px;
+
+    row-gap: 0px;
+  }
+  section.user-update .form-update .email {
+    align-self: center;
+  }
+  section.user-update .form-update .notelp {
+    align-self: center;
+  }
+  section.user-update .form-update .jeniskelamin {
+    grid-area: jeniskelamin;
+  }
+  section.user-update .form-update .kota {
+    grid-area: kota;
+  }
+  section.riwayat .riwayat-user .nama p {
+    font-size: 14px;
+  }
+  section.riwayat .riwayat-user .overlay a {
+    font-size: 18px;
+  }
+}

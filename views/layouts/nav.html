@@ -1,0 +1,165 @@
+<section class="navigasi">
+  <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <div class="container-fluid">
+        <a class="navbar-brand fw-bold fs-3" href="<?= (dataUser) ? '/home' : '/' ?>">Tongkrongin</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav mx-auto colorPrimary">
+            <a class="nav-link active me-2" aria-current="page" href="<?= (dataUser) ? '/home' : '/' ?>">Beranda</a>
+            <a class="nav-link me-2" href="<?= (dataUser) ? '/home' : '/' ?>">Fasilitas</a>
+            <a class="nav-link me-2" href="<?= (dataUser) ? '/home' : '/' ?>">Ulasan</a>
+            <a class="nav-link" href="/about">Tentang </a>
+          </div>
+          <div class="navbar-nav ms-auto secondary">
+            <form method="post" action="/search" class="nav-link me-2">
+              <input type="text" name="search" placeholder="Find Your Cafe" aria-label="Recipient's username" aria-describedby="button-addon2" />
+              <input type="submit" class="nav-link active me-3 submit-input" type="button" id="button-addon2" aria-current="page" value="" />
+              <img src="/icon/searchIcon.png" alt="search" class="search-button" />
+            </form>
+            <div class="notif">
+              <a class="nav-link me-3" href="/cart"><img src="/icon/chartIcon.png" alt="cart" /></a>
+              <? if(formCapacities){ ?>
+              <div class="bulat"></div>
+              <? } else { ?>
+              <span></span>
+              <? } ?>
+            </div>
+            <div class="notif">
+              <a class="nav-link me-3"><img src="/icon/notifIcon.png" alt="notif" /></a>
+              <? if(formCheckout.length !== 0){ ?>
+              <div class="bulat"></div>
+              <? } ?>
+              <ul class="list-group list-notif-control">
+                <? if(formCheckout.length >= 1){ ?>
+                <? formCheckout.forEach(el=>{ ?>
+                <? if(el.status == 'confirmed') {?>
+                <li class="list-group-item">
+                  <div class="notif-item">
+                    <a href="/invoice/<?= el.kodeInv ?>">
+                      <strong>Kode Booking Mu sudah Tiba</strong><br />
+                      Cek Buruan , dan datang ke Cafe tapi jangan telat ya
+                    </a>
+                  </div>
+                </li>
+                <? } ?>
+                <? if(el.status == 'waiting') {?>
+                <li class="list-group-item">
+                  <div class="notif-item">
+                    <a href="/invoice/<?= el.kodeInv ?>">
+                      <strong>Yeay Pesananmu udah kebayar</strong><br />
+                      Sering-sering cek ya, untuk mengklaim Kode Booking mu
+                    </a>
+                  </div>
+                </li>
+                <? } ?>
+                <? if(el.status == 'pending'){ ?>
+                <li class="list-group-item">
+                  <div class="notif-item">
+                    <a href="/cart">
+                      <strong>Keranjang Mu udah keisi nih</strong><br />
+                      Yuk Selesaikan Pesananmu sekarang!
+                    </a>
+                  </div>
+                </li>
+                <? } ?>
+
+                <? }) ?>
+                <? } else{ ?>
+                <li class="list-group-item">
+                  <div class="notif-item">
+                    <a href="/cafe">
+                      <strong>Yuk Nongkrong!</strong><br />
+                      kamu belum mesen apa-apa nih :)
+                    </a>
+                  </div>
+                </li>
+                <? } ?>
+              </ul>
+            </div>
+            <span class="batas"></span>
+
+            <? if (dataUser) {?>
+            <div class="user-hover">
+              <div class="nav-link">
+                <button class="btn btn-outline-secondary userpage"><i class="bi bi-person"></i></button>
+              </div>
+              <ul class="list-group list-user-control">
+                <li class="list-group-item">
+                  <h5 class="text-capitalize"><?= dataUser.nama ?></h5>
+                  <span><?= dataUser.email ?></span>
+                </li>
+                <li class="list-group-item">
+                  <table class="table table-sm">
+                    <tr>
+                      <td><i class="bi bi-person-fill"></i></td>
+                      <td><a class="text-dark" href="/user/<?= dataUser.id?>">Profile</a></td>
+                    </tr>
+                    <tr>
+                      <td><i class="bi bi-box-arrow-right"></i></td>
+                      <td>
+                        <form action="/logout?_method=DELETE" method="post">
+                          <button class="btn btn-outline-0 text-danger m-0 p-0" type="submit">Logout</button>
+                        </form>
+                      </td>
+                    </tr>
+                  </table>
+                </li>
+              </ul>
+            </div>
+
+            <? } else {?>
+            <a class="nav-link ms-3" href="/login"><button class="btn btn-outline-secondary">Masuk</button> </a>
+            <? }?>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="nav-res">
+  <div class="container">
+    <div class="kolomgrid">
+      <div class="search">
+        <form method="post" action="/search" class="w-100">
+          <input type="text" name="search" class="form-control" placeholder="Find Your Cafe" aria-label="Recipient's username" aria-describedby="button-addon2" />
+          <input type="submit" class="submit-search" />
+          <img src="/icon/searchIcon.png" alt="search" class="nav-link search-input"/></a>
+        </form>
+      </div>
+      <div class="keranjang">
+        <a class="nav-link" href="/cart"><img src="/icon/chartIcon.png" alt="chart" /></a>
+        <? if(formCapacities){ ?>
+          
+          <div class="bulat"></div>
+          <? } ?>
+      </div>
+      <div class="notifikasi">
+        <? if (dataUser) {?>
+        <a class="nav-link" href="/user/<?= dataUser.id?>"><img src="/icon/notifIcon.png" alt="notif" /></a>
+        <? }else{ ?>
+        <a class="nav-link" href="/login"><img src="/icon/notifIcon.png" alt="notif" /></a>
+
+        <? } ?>
+        <? if(formCapacities){ ?>
+          
+          <div class="bulat"></div>
+          <? } ?>
+      </div>
+      <div class="user">
+        <? if (dataUser) {?>
+
+        <a class="nav-link" href="/user/<?= dataUser.id?>">
+          <button class="btn btn-outline-secondary userpage"><i class="bi bi-person"></i></button>
+        </a>
+
+        <? } else {?>
+        <a class="nav-link" href="/login"><button class="btn btn-outline-secondary">Masuk</button> </a>
+        <? }?>
+      </div>
+    </div>
+  </div>
+</section>

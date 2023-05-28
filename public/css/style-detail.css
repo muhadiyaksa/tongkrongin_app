@@ -1,0 +1,225 @@
+section.deskripsi {
+  margin: 50px 0px;
+}
+section.deskripsi .namaCafe {
+  text-transform: capitalize;
+}
+section.deskripsi .image {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 420px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+}
+
+section.deskripsi .image img {
+  height: 100%;
+  width: auto;
+}
+section.deskripsi .image::after {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  top: 0;
+  bottom: 0;
+  background-image: linear-gradient(to top, rgba(20, 44, 5, 0.6), rgba(27, 34, 44, 0.1));
+}
+section.deskripsi .fasilitas {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 18px;
+}
+section.deskripsi .fasilitas img {
+  max-height: 30px;
+  margin-bottom: 5px;
+}
+section.deskripsi .fasilitas .kotak {
+  text-align: center;
+  border-radius: 8px;
+  padding: 12px 5px;
+  background-color: rgba(112, 112, 112, 0.05);
+  border: 1px solid rgba(112, 112, 112, 0.3);
+}
+section.deskripsi .fasilitas .kotak {
+  font-family: "Poppins", sans-serif;
+  font-size: 15px;
+}
+section.deskripsi .jambuka {
+  color: #4f4f4f;
+  font-family: "Poppins", sans-serif;
+  font-size: 15px;
+}
+section.deskripsi .alamat {
+  font-family: "Poppins", sans-serif;
+  font-size: 15px;
+  color: #4f4f4f;
+}
+section.deskripsi .ulasan {
+  font-family: "Poppins", sans-serif;
+}
+section.tempatduduk {
+  margin-bottom: 70px;
+}
+section.tempatduduk .jumlahKeranjang {
+  font-family: "Poppins", sans-serif;
+}
+section.tempatduduk a,
+section.makanan a {
+  text-decoration: none;
+  color: #4f4f4f;
+}
+section.tempatduduk p.alert {
+  font-size: 14px;
+  font-family: "Poppins", sans-serif;
+}
+section.tempatduduk .kapasitas {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1.5fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas:
+    "icon kategori  tersedia"
+    "icon kategori  harga";
+  background-color: rgba(112, 112, 112, 0.05);
+  border: 1px solid rgba(128, 118, 118, 0.3);
+  border-radius: 8px;
+  padding: 10px 10px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  transition: 0.4s;
+  position: relative;
+  overflow: hidden;
+}
+section.tempatduduk .kapasitas .overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+}
+section.tempatduduk .kapasitas .pesan-tempat {
+  display: none;
+}
+section.tempatduduk .kapasitas:hover {
+  background-color: white;
+}
+section.tempatduduk .kapasitas .icon {
+  grid-area: icon;
+}
+section.tempatduduk .kapasitas .kategori {
+  grid-area: kategori;
+}
+section.tempatduduk .kapasitas .kategori h4 {
+  font-weight: 600;
+}
+section.tempatduduk .kapasitas .kategori span {
+  font-family: "Poppins", sans-serif;
+  font-size: 13px;
+}
+section.tempatduduk .kapasitas .tersedia {
+  grid-area: tersedia;
+  font-family: "Poppins", sans-serif;
+  text-align: end;
+  color: #4fc816;
+  font-size: 16px;
+  font-weight: 500;
+}
+section.tempatduduk .kapasitas .harga {
+  grid-area: harga;
+  text-align: end;
+  font-family: "Poppins", sans-serif;
+  font-size: 22px;
+}
+
+section.tempatduduk .kapasitas h5,
+section.makanan .kapasitas h5 {
+  color: #4fc816;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+.modal {
+  font-family: "Poppins", sans-serif;
+}
+.modal .kotak {
+  width: 100%;
+  background-color: rgba(112, 112, 112, 0.05);
+  border: 1px solid rgba(112, 112, 112, 0.3);
+  border-radius: 2px;
+  padding: 9px 10px;
+}
+.modal span.info-jam,
+.modal span.info-tanggal {
+  font-size: 12px;
+  color: red;
+}
+@media (max-width: 575.98px) {
+  section.deskripsi .image {
+    width: 100%;
+    height: 320px;
+    align-items: center;
+    display: grid;
+  }
+  section.deskripsi .image img {
+    height: 100%;
+    width: 100%;
+  }
+
+  section.deskripsi h1 {
+    font-weight: 600;
+  }
+  section.deskripsi h5 {
+    font-size: 16px;
+  }
+  section.deskripsi h3 {
+    font-size: 22px;
+    font-weight: 600;
+  }
+  section.deskripsi .fasilitas {
+    margin-top: 5px;
+    grid-template-columns: repeat(auto-fill, minmax(67px, 1fr));
+    gap: 10px;
+    font-size: 13px;
+  }
+  section.tempatduduk p.alert {
+    font-size: 11px;
+  }
+  section.tempatduduk .kapasitas {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 0.5fr;
+    grid-template-areas:
+      "icon kategori kategori"
+      "icon kategori kategori"
+      "harga harga pesan";
+  }
+  section.tempatduduk .kapasitas .pesan-tempat {
+    display: block;
+    background-color: #94ff8a;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 18px;
+    padding: 5px 0px;
+    grid-area: pesan;
+    align-self: flex-end;
+  }
+  section.tempatduduk .kapasitas .kategori span {
+    font-size: 12px;
+  }
+  section.tempatduduk .kapasitas .kategori h4 {
+    font-weight: 600;
+  }
+  section.tempatduduk .kapasitas .tersedia,
+  section.tempatduduk .kapasitas .harga {
+    padding-top: 10px;
+    align-self: end;
+    font-weight: 600;
+    text-align: start;
+    padding-left: 15px;
+  }
+  section.tempatduduk .kapasitas .tersedia {
+    color: #4fc816;
+    display: none;
+  }
+}

@@ -1,0 +1,72 @@
+section.login {
+  background-image: url("../img/bannerLogin.png");
+  background-size: cover;
+  padding: 80px 0px;
+  position: relative;
+  color: white;
+  overflow: hidden;
+}
+section.regist {
+  background-image: url("../img/bannerRegist.png");
+  background-size: cover;
+  padding: 80px 0px;
+  position: relative;
+  color: white;
+  overflow: hidden;
+}
+section.login .konten,
+section.regist .konten {
+  font-family: "Poppins", sans-serif;
+  z-index: 1 !important;
+}
+section.login .konten h2,
+section.regist .konten h2 {
+  font-family: "Neucha";
+}
+section.login::after,
+section.regist::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(to top, rgba(27, 24, 44, 0.9), rgba(20, 53, 0, 0.4));
+}
+section.login .kotak,
+section.regist .kotak {
+  width: 100%;
+  padding: 10px;
+  background-color: white;
+  color: #4f4f4f;
+  margin-top: 20px;
+}
+
+section.login .atau,
+section.regist .atau {
+  margin-top: 20px;
+  text-align: center;
+}
+section.login .atau .garis,
+section.regist .atau .garis {
+  width: 40%;
+  height: 1px;
+  margin-bottom: 5px;
+  display: inline-block;
+  background-color: white;
+}
+section.login .form,
+section.regist .form {
+  position: relative;
+}
+section.login .form .bi,
+section.regist .form .bi {
+  position: absolute;
+  bottom: 6px;
+  left: 2%;
+  filter: invert(0.8);
+}
+section.login a,
+section.regist a {
+  color: white;
+}

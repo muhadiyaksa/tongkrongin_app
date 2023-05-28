@@ -1,0 +1,278 @@
+<section class="hero">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 content">
+        <h1>Tongkrongin Tanpa Basa-Basi<br />Tempat Nongkrong Mu</h1>
+        <p>Cari tempat nongkrong pilihan mu bersama teman-teman mu, lalu pesan Tempat dan Makanannya dengan Mudah di TONGKRONGIN!</p>
+        <a href="/cafe" class="buttonPrimary">Pesan Sekarang</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="highlight">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-auto">
+        <div class="kotak"></div>
+      </div>
+      <div class="col-md-4">
+        <h3 class="judul">Kami Memiliki Beberapa Cafe Favorite</h3>
+      </div>
+      <div class="col-md-7">
+        <p class="subjudul">Cafe ini paling banyak dipesan akhir-akhir ini , pesan segera tempat nongkrong mu sekarang!</p>
+      </div>
+    </div>
+
+    <div id="carouselExampleDark" class="carousel carousel-dark slide mt-5" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="slideCarousel">
+            <? caves.forEach(el=>{ ?>
+            <input type="hidden" class="object-caves" value="<?= el ?>" />
+            <? }) ?>
+            <? caves.forEach((el,i)=>{?>
+            <? if(i<4) { ?>
+            <div class="card">
+              <img src="img/cafe/<?= el.gambar[1].namaGambar ?>" alt="highlight1 1" />
+              <div class="card-body">
+                <h3 class="card-title judulcafe"><?= el.nama ?></h3>
+                <input type="hidden" class="alamat-cafe" value="<?= el.alamat ?>" />
+                <p class="card-text"><?= el.alamat ?></p>
+                <a href="/cafe/details/<?= el.idCafe ?>" class="btn btn-light card-link fw-bold">Selengkapnya</a>
+              </div>
+            </div>
+            <? } ?>
+            <? }) ?>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="slideCarousel">
+            <? caves.forEach((el,i)=>{?>
+            <? if(i>3 && i<8) { ?>
+            <div class="card">
+              <img src="img/cafe/<?= el.gambar[1].namaGambar ?>" alt="highlight1 1" />
+              <div class="card-body">
+                <h3 class="card-title judulcafe"><?= el.nama ?></h3>
+                <input type="hidden" class="alamat-cafe-sec" value="<?= el.alamat ?>" />
+                <p class="card-text-sec"><?= el.alamat ?></p>
+                <a href="/cafe/details/<?= el.idCafe ?>" class="btn btn-light card-link fw-bold">Selengkapnya</a>
+              </div>
+            </div>
+            <? } ?>
+            <? }) ?>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+
+    <div class="highlight-res">
+      <? caves.forEach((el,i)=>{?>
+      <? if(i<4) { ?>
+      <div class="res-row">
+        <div class="row">
+          <div class="col-5">
+            <img src="/img/cafe/<?= el.gambar[1].namaGambar ?>" alt="highligh1" class="img-fluid" />
+          </div>
+          <div class="col-7">
+            <h3 class="card-title"><?= el.nama ?></h3>
+            <input type="hidden" class="alamat-cafe-res" value="<?= el.alamat ?>" />
+            <p class="card-text-res"><?= el.alamat ?></p>
+            <a href="/cafe/details/<?= el.idCafe ?>" class="text-light">Selengkapnya</a>
+          </div>
+        </div>
+      </div>
+      <? } ?>
+      <? }) ?>
+    </div>
+
+    <div class="row text-center mt-5">
+      <div class="col-md">
+        <a href="/cafe" class="btn btn-light text-center px-3 fw-bold">Lihat Lebih <i class="bi bi-chevron-right"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="features">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-auto">
+        <div class="kotak"></div>
+      </div>
+      <div class="col-md-4">
+        <h3>Fasilitas Cafe yang Tersedia Cukup Lengkap</h3>
+      </div>
+      <div class="col-md-7">
+        <p class="subjudul">Beberapa fasilitas yang tersedia di beberapa cafe yang melakukan kerja sama dengan Tongkrongin</p>
+      </div>
+    </div>
+
+    <div class="cards mt-5">
+      <div class="card">
+        <div class="card-body">
+          <img src="icon/foodIcon.png" alt="foodIcon" />
+          <h5 class="card-title">Makanan</h5>
+          <p class="card-text">Makan Siang, Snak, dll</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <img src="icon/waterIcon.png" alt="waterIcon" />
+          <h5 class="card-title">Minuman</h5>
+          <p class="card-text">Kopi , Teh , Susu, dll</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <img src="icon/wifiIcon.png" alt="wifiIcon" />
+          <h5 class="card-title">Wifi</h5>
+          <p class="card-text">Free Untuk Pengunjung</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <img src="icon/toiletIcon.png" alt="toiletIcon" />
+          <h5 class="card-title">Toilet</h5>
+          <p class="card-text">Tersedia Untuk Pria & Wanita</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <img src="icon/parkirIcon.png" alt="parkirIcon" />
+          <h5 class="card-title">Parkir</h5>
+          <p class="card-text">Motor, Mobil</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <img src="icon/mosqueIcon.png" alt="mosqueIcon" />
+          <h5 class="card-title">Mushala</h5>
+          <p class="card-text">Ruangan Untuk Beribadah</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="panel">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg content">
+        <h1>Pesan Tempat Secara Online?, Tongkrongin Ajah</h1>
+        <p>Nikmati Kemudahan Memesan Tempat dan Makanan Secara Online Di Tempat Nongkrong Favoritmu</p>
+        <button class="buttonPrimary">Pesan sekarang</button>
+      </div>
+      <div class="col-lg text-center">
+        <div class="kotak"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ulasan">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-auto">
+        <div class="kotak"></div>
+      </div>
+      <div class="col-md-4">
+        <h3>Beberapa Ulasan Dari Para Pengunjung Cafe Mitra kami</h3>
+      </div>
+      <div class="col-md-7">
+        <p class="subjudul">Ulasan Ini dapat membantu Kamu untuk mengetahui secara jelas bagaimana Pelayanan Kami dan Kondisi Tempat Nongkrong dari Mitra Tongkrongin</p>
+      </div>
+    </div>
+
+    <div class="isiUlasan">
+      <div class="card">
+        <div class="image">
+          <img src="/img/ulasan/user1.png" class="card-img-top img-fluid" alt="..." />
+        </div>
+        <div class="card-body">
+          <p class="card-text">Aplikasi ini sangat bagus untuk memesan tempat secara cepat.</p>
+          <h5 class="card-title">Foto By : @Ayas</h5>
+        </div>
+      </div>
+      <div class="card">
+        <div class="image">
+          <img src="/img/ulasan/user2.png" class="card-img-top img-fluid" alt="..." />
+        </div>
+        <div class="card-body">
+          <p class="card-text">Website yang benar-benar baik dan bagus untuk digunakan memesan tempat nongkrong.</p>
+          <h5 class="card-title">Foto By : @Ahya</h5>
+        </div>
+      </div>
+      <div class="card">
+        <div class="image">
+          <img src="/img/ulasan/user3.png" class="card-img-top img-fluid" alt="..." />
+        </div>
+        <div class="card-body">
+          <p class="card-text">Tampilan yang mudah dan tidak belibet dalam proses penggunaannya, Cukup Baik.</p>
+          <h5 class="card-title">Foto By : @Enol</h5>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="image">
+          <img src="/img/ulasan/user4.png" class="card-img-top img-fluid" alt="..." />
+        </div>
+        <div class="card-body">
+          <p class="card-text">Aku tidak suka sistem Pembayaran Tidak otomatis, Namun aku menyukai solusi yang mereka tawarkan .</p>
+          <h5 class="card-title">Foto By : @Yahya</h5>
+        </div>
+      </div>
+      <div class="card">
+        <div class="image">
+          <img src="/img/ulasan/user5.png" class="card-img-top img-fluid" alt="..." />
+        </div>
+        <div class="card-body">
+          <p class="card-text">Sangat bagus, sekarang tidak perlu khawatir akan tempat penuh saat mau nongkrong.</p>
+          <h5 class="card-title">Foto By : @Bambang</h5>
+        </div>
+      </div>
+      <div class="card">
+        <div class="image">
+          <img src="/img/ulasan/user6.png" class="card-img-top img-fluid" alt="..." />
+        </div>
+        <div class="card-body">
+          <p class="card-text">Bagus , Kembangkan Lagi sistemnya , untuk mitra nya diperbanyak lagi .</p>
+          <h5 class="card-title">Foto By : @Jantuk</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg">
+        <div class="image"></div>
+      </div>
+      <div class="col-lg konten">
+        <div class="row mb-3">
+          <div class="col-md-1">
+            <div class="kotak"></div>
+          </div>
+          <div class="col-md-11">
+            <h2>
+              Cerita dibalik didirikannya<br />
+              Website Tongkrongin
+            </h2>
+          </div>
+        </div>
+        <p class="subjudul">Sedikit Mengulik tentang siapa dan bagaimana Proses Terbentukanya Tongkrongin yang memberikan kamu manfaat untuk mudah memesan makan dan tempat secara Online di tempat Nongkrong favorit Kamu</p>
+        <a href="/about" class="btn text-white px-3"> Baca Selengkapnya</a>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,84 @@
+<section class="heroCafe">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 content">
+        <h1 class="fw-700">Beberapa Cafe Favorite Yang <br />Kami Sediakan Untuk Anda.</h1>
+        <p>Pilih Wilayah Cafe yang menjadi Favorit kamu dengan Tongkrongin</p>
+        <div class="dropdown">
+          <form action="/cafe" method="post">
+            <select name="kota" id="kota" class="form-select" aria-label="Default select example">
+              <option selected>Pilih Kategori Kota</option>
+              <option value="jakarta timur">Jakarta Timur</option>
+              <option value="jakarta selatan">Jakarta Selatan</option>
+              <option value="jakarta pusat">Jakarta Pusat</option>
+              <option value="jakarta barat">Jakarta Barat</option>
+              <option value="jakarta utara">Jakarta Utara</option>
+              <option value="semua">Semua Cafe</option>
+            </select>
+            <button type="submit" class="btn btn-light px-5 py-1 rounded mt-3 text-dark fw-bold">CARI</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="listCafe" id="listCafe">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-auto">
+        <div class="kotak"></div>
+      </div>
+      <div class="col-md-4">
+        <h3>Cafe favorit Menurut Para Konsumen</h3>
+      </div>
+      <div class="col-md-7">
+        <p class="subjudul">Berikut adalah Beberapa Cafe yang telah menjadi Mitra dari Tongkrongin , Pilih lah salah satunya lalu Pesan sekarang dan Tongkrongin Tempat Nongkrong Mu</p>
+      </div>
+    </div>
+
+    <? if(caves.length === 0){ ?>
+    <section class="wrong">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <img src="/img/wrong.png" alt="Wrong" class="img-fluid" />
+            <a href=""></a>
+          </div>
+          <div class="col-md-6 my-auto text-center">
+            <h1 class="fw-bold text-secondary">Ups!, Data Cafe tidak ada.</h1>
+            <h5 class="text-secondary mb-4">Cari Cafe yang lain yuk!</h5>
+          </div>
+        </div>
+      </div>
+    </section>
+    <? }else{ ?>
+    <div class="isi-list-cafe">
+      <? caves.forEach((el,i)=>{?>
+      <a href="/cafe/details/<?= el.idCafe ?>">
+        <div class="card">
+          <img src="/img/cafe/<?= el.gambar[1].namaGambar ?>" alt="cafe <?= el.nama ?>" />
+          <div class="card-body">
+            <h3 class="card-title"><?= el.nama ?></h3>
+            <p class="card-text"><?= el.kategori ?></p>
+            <p class="card-text-sec"><?= el.alamat ?></p>
+
+            <div class="row">
+              <div class="col-md-auto">
+                <span>5.0</span>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+              <div class="col-md text-end ulasan">12 Ulasan</div>
+            </div>
+          </div>
+        </div>
+      </a>
+      <? }) ?>
+    </div>
+    <? } ?>
+  </div>
+</section>

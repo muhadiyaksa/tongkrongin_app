@@ -1,0 +1,250 @@
+<? if(foods.length === 0) {?>
+<section class="wrong">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <img src="/img/wrong.png" alt="Wrong" class="img-fluid" />
+        <a href=""></a>
+      </div>
+      <div class="col-md-6 my-auto">
+        <h1 class="fw-bold text-secondary">Ups!, Data Id Cafe tidak ada.</h1>
+        <h5 class="text-secondary mb-4">Kembali Ke Keranjang ajah</h5>
+        <a href="/cart" class="fw-bold text-secondary">Kembali Ke Halaman</a>.
+      </div>
+    </div>
+  </div>
+</section>
+<? } else { ?>
+<section class="makanan">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-7">
+        <div class="list-makanan">
+          <h3 class="text-capitalize fw-bold">pilihan menu cafe</h3>
+          <div class="jumlahpesanan mb-4">
+            <div class="row">
+              <div class="col-auto">
+                <span class="fw-bold jml-pesanan"><?= (formFoods) ? formFoods.length + 1 : '1' ?></span> Pesanan Dalam Keranjang
+              </div>
+              <div class="col bayar">
+                <button class="btn p-0 addtocartres">Tambah <i class="bi bi-arrow-right-circle"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <input type="hidden" class="jmlFormFoods" value="<?= formFoods.length ?>" />
+
+          <? if(formFoods.length >0){ ?>
+          <? if(hslFormFoods.length >0){ ?>
+          <? hslFormFoods.forEach((food, i)=>{ ?>
+          <div class="menu">
+            <div class="image">
+              <img src="/img/food/<?= food.gambar ?>" alt="food 1" class="img-fluid" />
+            </div>
+            <div class="makanan">
+              <h4><?= food.namaMenu ?></h4>
+              <span><?= food.deskripsi ?></span>
+            </div>
+            <h3 class="tersedia text-capitalize"><?= food.status ?></h3>
+            <h3 class="pesan" number="<?= i ?>" idcafe="<?= food.idCafe ?>" iduser="<?= (dataUser) ? dataUser.id : '' ?>" idmenu="<?= food.idMenu ?>">Tambah</h3>
+            <input type="hidden" value="<?= food.harga ?>" class="value-harga" name="harga" />
+            <h3 class="harga">
+              Rp.
+              <?= food.harga ?>
+            </h3>
+            <div class="quantity">
+              <input type="hidden" value="0" class="quantity-value" name="quantity" />
+              <h2><i class="bi bi-dash-circle kurang" number="<?= i?>" food-name="<?= food.namaMenu ?>"></i> <span> 0 </span> <i class="bi bi-plus-circle text-success tambah" number="<?= i?>" food-name="<?= food.namaMenu ?>"></i></h2>
+            </div>
+          </div>
+          <? }) ?>
+          <? }else{ ?>
+          <div class="text-center text-secondary mt-5">
+            <img src="/img/forfull-cart.png" alt="Full Cart" class="img-fluid w-50" />
+            <h3 class="mt-3">Yeay , Kamu Sudah Memesan Semua Makanan</h3>
+            <p>Selesaikan Pesanan Mu Sekarang.</p>
+          </div>
+          <? } ?>
+
+          <? }else{ ?>
+
+          <? foods.forEach((food, i)=>{ ?>
+          <div class="menu">
+            <div class="image">
+              <img src="/img/food/<?= food.gambar ?>" alt="food 1" class="img-fluid" />
+            </div>
+            <div class="makanan">
+              <h4><?= food.namaMenu ?></h4>
+              <span><?= food.deskripsi ?></span>
+            </div>
+            <h3 class="tersedia text-capitalize"><?= food.status ?></h3>
+            <h3 class="pesan" number="<?= i ?>" idcafe="<?= food.idCafe ?>" iduser="<?= (dataUser) ? dataUser.id : '' ?>" idmenu="<?= food.idMenu ?>">Tambah</h3>
+            <input type="hidden" value="<?= food.harga ?>" class="value-harga" name="harga" />
+            <h3 class="harga">
+              Rp.
+              <?= food.harga ?>
+            </h3>
+            <div class="quantity">
+              <input type="hidden" value="0" class="quantity-value" name="quantity" />
+              <h2><i class="bi bi-dash-circle kurang" number="<?= i?>" food-name="<?= food.namaMenu ?>"></i> <span> 0 </span> <i class="bi bi-plus-circle text-success tambah" number="<?= i?>" food-name="<?= food.namaMenu ?>"></i></h2>
+            </div>
+          </div>
+          <? }) ?>
+
+          <? } ?>
+        </div>
+      </div>
+
+      <div class="col-md-5 pesanan">
+        <ul class="list-group">
+          <li class="list-group-item kolompesanan">Pesanan Anda</li>
+          <li class="list-group-item">
+            <h4 class="subjudul">Booking Tempat</h4>
+            <div class="kapasitas">
+              <div class="row">
+                <div class="col-md-3 image bg-none">
+                  <img src="/icon/conversation.png" alt="kapasitas" class="img-fluid p-4" />
+                </div>
+                <div class="col-md-6">
+                  <h4>
+                    Kategori
+                    <?= (formCapacities) ? formCapacities.kapKategori : ''?>
+                    Orang
+                  </h4>
+                  <input type="hidden" class="harga-kapasitas" value="<?= (formCapacities) ? formCapacities.harga : '' ?>" />
+                  <span class="harga-kapasitas"
+                    >Rp.
+                    <?= (formCapacities) ? formCapacities.harga : ''?></span
+                  >
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="list-group-item cart">
+            <h4 class="subjudul">Paket Makanan</h4>
+
+            <? if(formFoods){ ?>
+            <? formFoods.forEach(el =>{ ?>
+            <? foods.forEach(food=>{ ?>
+            <? if(el.idMenu == food.idMenu ){ ?>
+            <div class="kapasitas">
+              <div class="row">
+                <div class="col-3 image">
+                  <img src="/img/food/<?= food.gambar ?>" alt="food 2" class="img-fluid" />
+                </div>
+                <div class="col-auto">
+                  <h4><?= food.namaMenu ?></h4>
+                  <span
+                    >Rp.
+                    <?= el.harga ?></span
+                  >
+                </div>
+                <div class="col my-auto text-end qty">
+                  <h4><?= el.quantity ?></h4>
+                </div>
+              </div>
+            </div>
+            <? } ?>
+            <? }) ?>
+            <? }) ?>
+            <? } ?>
+
+            <form action="/cafe/food" method="post">
+              <div class="wadahCart"></div>
+
+              <div class="text-center my-4">
+                <input type="submit" class="btn btn-secondary px-4 text-light addtocart" value="Tambah Keranjang" />
+              </div>
+            </form>
+          </li>
+        </ul>
+        <p class="indikator"></p>
+      </div>
+    </div>
+  </div>
+</section>
+<? } ?>
+<!-- 
+<a href="#">
+  <div class="kapasitas">
+    <div class="row">
+      <div class="col-md-4">
+        <img src="/img/food2.png" alt="food 2" class="img-fluid" />
+      </div>
+      <div class="col-md-5">
+        <h4>Burger dan Kentang</h4>
+        <span>Shushi dengan daging premium ditambah bakmi kuah dengan toping lengkap</span>
+      </div>
+      <div class="col-md-3 text-end">
+        <h5>Tersedia</h5>
+        <h3>Rp 30.000</h3>
+      </div>
+    </div>
+  </div>
+</a>
+<a href="#">
+  <div class="kapasitas">
+    <div class="row">
+      <div class="col-md-4">
+        <img src="/img/food3.png" alt="food 3" class="img-fluid" />
+      </div>
+      <div class="col-md-5">
+        <h4>Coffee Latte</h4>
+        <span>Shushi dengan daging premium ditambah bakmi kuah dengan toping lengkap</span>
+      </div>
+      <div class="col-md-3 text-end">
+        <h5>Tersedia</h5>
+        <h3>Rp 30.000</h3>
+      </div>
+    </div>
+  </div>
+</a>
+<a href="#">
+  <div class="kapasitas">
+    <div class="row">
+      <div class="col-md-4">
+        <img src="/img/food4.png" alt="food 4" class="img-fluid" />
+      </div>
+      <div class="col-md-5">
+        <h4>Sate Taichan</h4>
+        <span>Shushi dengan daging premium ditambah bakmi kuah dengan toping lengkap</span>
+      </div>
+      <div class="col-md-3 text-end">
+        <h5>Tersedia</h5>
+        <h3>Rp 30.000</h3>
+      </div>
+    </div>
+  </div>
+</a> -->
+
+<!-- //------------------------------------------------------------------------------- -->
+<!-- 
+<div class="kapasitas">
+  <div class="row">
+    <div class="col-md">
+      <img src="/img/food2.png" alt="food 2" class="img-fluid" />
+    </div>
+    <div class="col-md">
+      <h4>Burger Dan Kentang</h4>
+      <span>Rp. 10.000</span>
+    </div>
+  </div>
+</div>
+<div class="kapasitas">
+  <div class="row">
+    <div class="col-md-3">
+      <img src="/img/food4.png" alt="food 4" class="img-fluid" />
+    </div>
+    <div class="col-md-6">
+      <h4>Sate Taichan</h4>
+      <span>Rp. 10.000</span>
+    </div>
+  </div>
+</div> -->
+<!--  for(let i = 0; i<foods.length ;i++){ ?>
+  <input type="hidden" value="< foods[i].idCafe ?>" name="idcafe" />
+  <input type="hidden" value="< dataUser.id ?>" name="iduser" />
+  <input type="hidden" value="< foods[i].idMenu?>" name="idmenu" />
+  <input type="hidden" value="10" name="quantity" />
+  <input type="hidden" value="25000" name="harga" />             
+< } ?> -->

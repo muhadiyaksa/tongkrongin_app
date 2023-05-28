@@ -1,0 +1,129 @@
+<section class="user-update">
+  <div class="container">
+    <a href="/user/<?= user.id ?>" class="fs-2">
+      <i class="bi bi-arrow-left-circle-fill me-3"></i>
+      Profile
+    </a>
+
+    <? if (typeof errors != 'undefined') { ?>
+    <div class="alert alert-danger" role="alert">
+      <ul>
+        <? errors.forEach(error=>{ ?>
+        <li>
+          <?= error.msg ?>
+        </li>
+        <? }) ?>
+      </ul>
+    </div>
+    <? } ?>
+
+    <? if(msg.length !== 0) {?>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      <?= msg  ?>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <? } ?>
+
+    <form method="post" action="/user/update?_method=PUT">
+      <div class="form-update">
+        <div class="row identitas">
+          <div class="col-3 image">
+            <? if(files){ ?>
+            <img src="/image/<?= files.filename ?>" alt="Img Profile" class="img-fluid" />
+            <? } ?>
+          </div>
+          <div class="col-9">
+            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#modalUpload">Ubah Foto Profil</button>
+          </div>
+        </div>
+
+        <div class="nama">
+          <input type="hidden" value="<?= user.id ?>" name="id" />
+          <label for="nama">Nama Lengkap <span>*</span></label>
+          <input type="text" class="input-update text-capitalize" id="nama" name="nama" value="<?= user.nama ?>" />
+        </div>
+
+        <div class="email">
+          <label for="email">Email <span>*</span></label>
+          <input type="hidden" name="email" value="<?= user.email ?>" />
+          <input type="email" disabled="true" class="input-update" id="email" name="email2" value="<?= user.email ?>" />
+        </div>
+
+        <div class="notelp">
+          <label for="notelp">Nomor Telepon <span>*</span></label>
+          <input type="number" class="input-update" id="notelp" name="notelp" value="<?= user.notelp ?>" />
+        </div>
+
+        <div class="jeniskelamin">
+          <label for="jeniskelamin">Jenis Kelamin</label>
+          <select id="jeniskelamin" name="jeniskelamin">
+            <? if (user.jeniskelamin == 'Perempuan') {?>
+            <option><?= user.jeniskelamin || '-' ?></option>
+            <option value="Laki-laki">Laki-Laki</option>
+            <? } else if (user.jeniskelamin == 'Laki-laki') { ?>
+            <option><?= user.jeniskelamin || '-' ?></option>
+            <option value="Perempuan">Perempuan</option>
+            <? } else {?>
+            <option><?= user.jeniskelamin || '-' ?></option>
+            <option value="Laki-laki">Laki-laki</option>
+            <option value="Perempuan">Perempuan</option>
+            <? }?>
+          </select>
+        </div>
+
+        <div class="kota">
+          <label for="kota">Kota</label>
+          <input type="text" class="input-update" id="kota" name="kota" value="<?= user.kota ?>" />
+          <input type="hidden" value="<?= user.password?>" name="password" />
+          <input type="hidden" value="<?= user.passwordChecked?>" name="passwordChecked" />
+        </div>
+      </div>
+      <div class="simpan">
+        <button type="submit" class="btn">Simpan</button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- Modal -->
+<div class="modal fade" id="modalUpload" tabindex="-1" aria-labelledby="modalUploadLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="header mb-3">
+          <div class="row">
+            <div class="col">
+              <h5 class="modal-title" id="modalUploadLabel">Unggah Foto</h5>
+            </div>
+            <div class="col text-end">
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+          </div>
+        </div>
+        <div class="konten-upload">
+          <form action="/uploadfoto?_method=PUT" method="post" enctype="multipart/form-data">
+            <input type="hidden" value="<?= user.id ?>" name="id" />
+            <input type="hidden" value="<?= user.nama ?>" name="nama" />
+            <input type="hidden" value="<?= user.notelp ?>" name="notelp" />
+            <input type="hidden" value="<?= user.email ?>" name="email" />
+            <input type="hidden" value="<?= user.password ?>" name="password" />
+            <input type="hidden" value="<?= user.passwordChecked ?>" name="passwordChecked" />
+            <input type="hidden" value="<?= user.fotoprofil ?>" name="fotoprofilLama" />
+
+            <div class="hasil-file"></div>
+            <h2 class="mb-4"><i class="bi bi-file-earmark-plus"></i></h2>
+            <p>Seret foto ke area ini (bisa lebih dari satu sekaligus) atau tekan tombol unggah dibawah ini. Pastikan foto telah memenuhi <strong>kualitas Tongkrongin (png , jpg , jpeg)</strong></p>
+            <label for="upload-photo">Unggah Foto</label>
+            <input type="file" name="file" id="upload-photo" class="upload-photo" />
+            <input type="submit" value="Coba nih Kirim" class="submit-photo" style="display: none" />
+          </form>
+        </div>
+        <div class="notif-area my-3"></div>
+        <div class="kirim">
+          <div class="overlay-loc overlay-upload"></div>
+          <input type="submit" value="Kirim" class="button-kirim" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

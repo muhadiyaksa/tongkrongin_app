@@ -1,0 +1,744 @@
+.container {
+  font-family: "Neucha", cursive;
+}
+.buttonPrimary {
+  background-color: white;
+  padding: 10px 35px;
+  border-radius: 8px;
+  border: 0px solid;
+  font-size: 22px;
+  font-weight: 600;
+  color: #4f4f4f;
+  transition: 0.3s;
+  text-decoration: none;
+}
+.buttonPrimary:hover {
+  color: black;
+  background-color: #f3f3f3;
+}
+/* NAVBAR */
+section.navigasi {
+  box-shadow: 2px 2px 15px rgba(112, 112, 112, 0.2);
+}
+section.navigasi button.userpage,
+section.nav-res button.userpage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 38px;
+  height: 100%;
+  border-radius: 30px;
+}
+
+section.nav-res button.userpage {
+  padding: none;
+}
+section.nav-res .logout {
+  display: none;
+}
+.nav-link img {
+  max-height: 24px;
+}
+.nav-link {
+  line-height: 35px;
+  font-family: "Poppins", sans-serif;
+  font-size: 13px;
+}
+.navbar-nav span.batas {
+  min-height: 100%;
+  background-color: #9b9b9b;
+  width: 2px;
+}
+.secondary {
+  position: relative;
+}
+.navbar-nav input {
+  border: none;
+  outline: none;
+  border-bottom: 1px solid #4f4f4f;
+  padding-bottom: 0;
+}
+.navbar-nav input.submit-input {
+  display: none;
+}
+.nav-res input.submit-search {
+  display: none;
+}
+.navbar-nav img.search-button {
+  position: absolute;
+  top: 15px;
+  left: 150px;
+  cursor: pointer;
+}
+.nav-res .search {
+  position: relative;
+}
+.nav-res img.search-input {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  cursor: pointer;
+  max-width: 55px;
+}
+.navbar-nav .notif {
+  position: relative;
+}
+.navbar-nav .notif .bulat {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 10px;
+  background-color: red;
+  top: 10px;
+  right: 20px;
+}
+/* HERO */
+section.hero {
+  height: 450px;
+  background-image: url("../img/bannerHome.png");
+  background-size: cover;
+  position: relative;
+}
+section.hero .content {
+  padding-top: 120px;
+  z-index: 2;
+  color: white;
+}
+section.hero .content p {
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  margin-bottom: 40px;
+  font-size: 16px;
+}
+section.hero .content h1 {
+  font-weight: 700;
+}
+.hero::after {
+  z-index: 1;
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  bottom: 0;
+  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.4));
+}
+
+/* HIGHLIGHT */
+
+section.highlight {
+  padding-top: 50px;
+  background-color: #1b222c;
+  padding-bottom: 100px;
+  color: white;
+}
+section.highlight .highlight-res {
+  display: none;
+}
+section.highlight .kotak {
+  width: 15px;
+  height: 100%;
+  background-color: white;
+}
+section.highlight .slideCarousel {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  column-gap: 20px;
+  padding: 10px 10px;
+}
+section.highlight .slideCarousel .card {
+  position: relative;
+  color: #ffffff;
+  width: 300px;
+  height: 280px;
+  position: relative;
+  box-sizing: border-box;
+  border: none;
+  border-radius: 10px;
+  overflow: hidden;
+  /* border: 1px solid #9b9b9b; */
+  display: flex;
+  align-items: center;
+  box-shadow: 0px 1px 10px #525252;
+}
+section.highlight .slideCarousel .card img {
+  height: 100%;
+  width: auto;
+}
+
+section.highlight .slideCarousel .card p {
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-size: 14px;
+}
+section.highlight .slideCarousel .card .card-body,
+section.listCafe .isi-list-cafe .card .card-body {
+  z-index: 2;
+  position: absolute;
+  bottom: 0;
+}
+section.highlight .slideCarousel .card::after,
+section.listCafe .isi-list-cafe .card::after {
+  z-index: 1;
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  bottom: 0;
+  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.2));
+}
+section.highlight button {
+  background-color: #ffffff !important;
+  z-index: 999;
+
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  margin-top: 100px;
+  margin: 100px -25px;
+}
+
+/* FEATURES (include ULASAN)*/
+section.features {
+  padding-top: 80px;
+}
+section.features .card .card-text {
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+}
+section.features .card .card-body {
+  display: grid;
+  grid-template-rows: 1fr 0.4fr 0.4fr;
+  grid-template-areas:
+    "image"
+    "judul"
+    "deskripsi";
+}
+section.features .card .card-body img {
+  grid-area: image;
+}
+section.features .card .card-body h5 {
+  grid-area: judul;
+}
+section.features .card .card-body p {
+  grid-area: deskripsi;
+}
+section.features .kotak,
+section.ulasan .kotak,
+section.about .kotak,
+section.listCafe .kotak {
+  width: 15px;
+  height: 100%;
+  background-color: #4f4f4f;
+}
+section.features .cards,
+section.ulasan .isiUlasan {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas:
+    "satu dua tiga"
+    "empat lima enam";
+  justify-content: space-between;
+  gap: 20px;
+}
+section.features .cards img {
+  max-height: 50px;
+}
+section.features .cards .card:nth-child(1),
+section.ulasan .isiUlasan .card:nth-child(1) {
+  grid-area: satu;
+}
+section.features .cards .card:nth-child(2),
+section.ulasan .isiUlasan .card:nth-child(2) {
+  grid-area: dua;
+}
+section.features .cards .card:nth-child(3),
+section.ulasan .isiUlasan .card:nth-child(3) {
+  grid-area: tiga;
+}
+section.features .cards .card:nth-child(4),
+section.ulasan .isiUlasan .card:nth-child(4) {
+  grid-area: empat;
+}
+section.features .cards .card:nth-child(5),
+section.ulasan .isiUlasan .card:nth-child(5) {
+  grid-area: lima;
+}
+section.features .cards .card:nth-child(6),
+section.ulasan .isiUlasan .card:nth-child(6) {
+  grid-area: enam;
+}
+
+/* INFO PANEL */
+section.panel {
+  background-color: #1b222c;
+  color: white;
+  padding: 40px 0px;
+  margin-top: 100px;
+}
+section.panel .content {
+  margin: 80px 0px;
+}
+section.panel .content p {
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+}
+
+section.panel .kotak {
+  margin-left: auto;
+  background-image: url("../img/panelImg.png");
+  background-size: cover;
+  width: 50%;
+  height: 100%;
+  position: relative;
+}
+section.panel .kotak::after {
+  overflow: hidden;
+  z-index: 100;
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  bottom: 0;
+  background-image: linear-gradient(to top, rgba(10, 31, 21, 0.5), rgba(0, 0, 0, 0.1));
+}
+
+/* ULASAN */
+section.ulasan {
+  margin-top: 80px;
+}
+section.ulasan .isiUlasan {
+  margin-top: 50px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+}
+section.ulasan .isiUlasan .card .card-text {
+  font-size: 14px;
+}
+section.ulasan .isiUlasan .card .card-title {
+  font-size: 16px;
+}
+section.ulasan .isiUlasan .image {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px 10px 0px 0px;
+}
+
+section.ulasan .isiUlasan .image::after {
+  z-index: 1;
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  bottom: 0;
+  background-image: linear-gradient(to top, rgba(10, 31, 21, 0.7), rgba(0, 0, 0, 0.1));
+}
+section.ulasan .isiUlasan .card {
+  border-radius: 10px;
+}
+section.ulasan .isiUlasan .card .card-body {
+  z-index: 10;
+}
+
+/* ABOUT */
+section.about {
+  margin: 100px 0px;
+}
+section.about .image {
+  margin-right: auto;
+  background-image: url("../img/about.png");
+  background-size: cover;
+  width: 80%;
+  height: 500px;
+  position: relative;
+  border-radius: 10px;
+}
+section.about .konten {
+  margin-top: 120px;
+}
+/* FEATURES */
+section.highlight p.subjudul,
+section.features p.subjudul,
+section.ulasan p.subjudul,
+section.about p.subjudul,
+section.listCafe p.subjudul,
+section.panel p.subjudul {
+  font-size: 16px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  padding-left: 10px;
+}
+section.about p.subjudul {
+  font-size: 14px;
+  padding-left: 0px;
+}
+section.about a {
+  background-color: #4f4f4f;
+  color: white;
+  font-family: "Poppins", sans-serif;
+}
+
+/* footer */
+section.footer {
+  background-color: #1b222c;
+  color: white;
+  padding-top: 50px;
+}
+section.footer .footergrid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+  grid-template-areas: "judul sa sa kontak navigasi";
+}
+section.footer .judul {
+  grid-area: judul;
+}
+section.footer .judul p {
+  font-family: "Poppins", sans-serif;
+  font-size: 13px;
+}
+section.footer .kontak {
+  grid-area: kontak;
+}
+section.footer .navigasi {
+  grid-area: navigasi;
+}
+section.footer .navigasi a {
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+}
+section.footer .bottom {
+  font-family: "Poppins", sans-serif;
+  font-size: 12px;
+}
+section.footer a {
+  text-decoration: none;
+  color: #ffffff;
+}
+section.footer .kontak a {
+  font-family: "Poppins", sans-serif;
+  font-size: 12px;
+}
+section.nav-res {
+  display: none;
+}
+
+@media (max-width: 575.98px) {
+  .buttonPrimary {
+    padding: 5px 15px;
+    font-size: 16px;
+  }
+  section.hero .content p {
+    display: none;
+  }
+  .nav-link {
+    margin: 0 -4px;
+  }
+  section.hero {
+    height: 270px;
+  }
+  section.hero .content {
+    padding-top: 45px;
+    text-align: center;
+  }
+  section.hero .content h1 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 30px;
+  }
+
+  section.highlight .carousel {
+    display: none;
+  }
+  section.highlight p.subjudul,
+  section.features p.subjudul,
+  section.ulasan p.subjudul,
+  section.about p.subjudul,
+  section.listCafe p.subjudul,
+  section.panel p.subjudul {
+    font-size: 12px;
+    border-left: 2px solid #4f4f4f;
+  }
+  section.highlight .highlight-res {
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+    font-size: 14px;
+  }
+  section.highlight .highlight-res .card-text-res {
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    font-size: 12px;
+  }
+  section.highlight .highlight-res {
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+    font-size: 14px;
+  }
+  section.highlight .highlight-res .res-row {
+    margin-bottom: 20px;
+    border: 1px solid rgba(212, 212, 212, 0.2);
+    padding: 10px 5px;
+    border-radius: 8px;
+    box-shadow: 0px 1px 4px #9b9b9b;
+  }
+  section.highlight .highlight-res .button {
+    font-size: 14px;
+  }
+  section.features .cards,
+  section.ulasan .isiUlasan {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "satu dua"
+      "tiga empat"
+      "lima enam";
+  }
+  section.panel .row {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  section.panel .row .content {
+    text-align: center;
+    margin: 10px 0;
+  }
+  section.panel .row .content h1 {
+    border-bottom: 1px solid white;
+    padding-bottom: 10px;
+  }
+  section.panel .row .content p {
+    font-size: 14px;
+  }
+  section.panel .kotak {
+    margin: auto;
+    background-position-y: bottom;
+    width: 50%;
+    height: 170px;
+    border-radius: 8px;
+    position: relative;
+  }
+  section.about {
+    margin-top: 80px;
+    margin-bottom: 30px;
+  }
+  section.about p.subjudul {
+    padding-left: 10px;
+  }
+  section.about .image {
+    margin: 0 auto;
+    height: 200px;
+    width: 95%;
+  }
+  section.about .konten {
+    margin: 20px 0px;
+  }
+  section.features .card .card-body {
+    display: grid;
+    grid-template-rows: 1fr 0.4fr;
+    grid-template-columns: 0.4fr 1fr;
+    grid-template-areas:
+      "image judul"
+      "deskripsi deskripsi";
+    column-gap: 10px;
+  }
+  section.features .card .card-body img {
+    max-width: 30px;
+    align-self: flex-start;
+  }
+  section.features .card .card-body h5 {
+    align-self: flex-start;
+    font-size: 22px;
+  }
+  section.features .card .card-body p {
+    align-self: flex-start;
+    margin: 0;
+    font-size: 13px;
+  }
+  section.footer .navigasi a {
+    font-family: "Poppins", sans-serif;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 991.98px) {
+  /* BAGIAN NAVBAR */
+
+  section.nav-res {
+    display: block;
+    padding: 15px;
+  }
+  section.nav-res .kolomgrid {
+    display: grid;
+    grid-template-columns: 3fr 0.5fr 0.5fr 0.5fr;
+    grid-template-areas: "satu  dua tiga empat";
+    align-items: center;
+    gap: 0px;
+    margin: 0;
+  }
+  section.nav-res .kolomgrid .search {
+    grid-area: satu;
+    position: relative;
+  }
+  section.nav-res .kolomgrid .search a {
+    position: absolute;
+    right: -8px;
+    top: -6px;
+    z-index: 1;
+  }
+  section.nav-res .kolomgrid .keranjang {
+    grid-area: dua;
+    text-align: center;
+    position: relative;
+  }
+
+  section.nav-res .kolomgrid .notifikasi {
+    grid-area: tiga;
+    text-align: center;
+    position: relative;
+  }
+  section.nav-res .kolomgrid .user {
+    grid-area: empat;
+    margin: 0 auto;
+  }
+
+  section.nav-res .kolomgrid .keranjang .bulat,
+  section.nav-res .kolomgrid .notifikasi .bulat {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    right: 20%;
+    top: 10px;
+    background-color: red;
+    border-radius: 10px;
+  }
+
+  section.navigasi .secondary {
+    display: none;
+  }
+
+  /* HERO */
+
+  section.hero .content .buttonPrimary {
+    font-size: 14px;
+    padding: 10px 15px;
+  }
+
+  /* HIGHLIGHT */
+  section.highlight h3.judul {
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  section.highlight p.subjudul {
+    font-size: 14px;
+    border-left: 2px solid white;
+    padding-left: 10px;
+  }
+  section.highlight .judulcafe {
+    font-size: 18px;
+  }
+
+  section.highlight .carousel .card {
+    height: 300px;
+    font-size: 14px;
+    border: 1px solid #9b9b9b;
+    overflow: hidden;
+  }
+  section.highlight .slideCarousel .card img {
+    height: 50%;
+  }
+
+  section.highlight .slideCarousel .card p {
+    font-size: 14px;
+    color: #9b9b9b;
+  }
+  section.highlight .carousel button {
+    position: absolute;
+    top: 10%;
+  }
+  section.highlight .carousel .card .card-body {
+    text-align: center;
+    padding-left: 7px;
+    background-color: #1b222c;
+  }
+
+  /* BAGIAN FOOTER */
+  section.footer {
+    font-size: 14px;
+  }
+  section.footer .judul {
+    text-align: center;
+  }
+  section.footer .footergrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: "judul judul" "kontak navigasi";
+  }
+}
+
+@media (min-width: 768px) {
+  .user-hover {
+    position: relative;
+    font-family: "Poppins", sans-serif;
+    margin-left: 20px;
+    height: 100%;
+    align-self: center;
+  }
+  .user-hover h5 {
+    font-size: 15px;
+    margin: 0;
+  }
+  .user-hover span {
+    font-size: 12px;
+  }
+
+  .list-user-control,
+  .list-notif-control {
+    position: absolute;
+    border-radius: 10px;
+    z-index: 99;
+    visibility: hidden;
+    display: none;
+    font-family: "Poppins", sans-serif;
+  }
+  .list-user-control {
+    width: 200px;
+    left: -75px;
+    top: 55px;
+  }
+  .list-notif-control {
+    padding: 10px 0px;
+    width: 250px;
+    left: -100px;
+    font-size: 12px;
+    top: 50px;
+  }
+  .list-notif-control a {
+    text-decoration: none;
+    color: #4f4f4f;
+  }
+  .list-notif-control .notif-item:visited {
+    background-color: aqua;
+  }
+  .list-notif-control .notif-item {
+    background-color: #f3f3f3;
+    padding: 10px 10px;
+    border-radius: 3px;
+  }
+  .list-user-control td {
+    border-bottom: 0px !important;
+  }
+  .list-user-control td a {
+    text-decoration: none;
+  }
+  .list-user-control tr:nth-child(2) {
+    color: red;
+  }
+  .user-hover:hover .list-user-control,
+  .notif:hover .list-notif-control {
+    visibility: visible !important;
+  }
+}

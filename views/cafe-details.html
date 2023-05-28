@@ -1,0 +1,144 @@
+<? if(!caves) {?>
+<section class="wrong">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <img src="/img/wrong.png" alt="Wrong" class="img-fluid" />
+        <a href=""></a>
+      </div>
+      <div class="col-md-6 my-auto">
+        <h1 class="fw-bold text-secondary">Ups!, Data Cafe tidak ada.</h1>
+        <h5 class="text-secondary mb-4">Cari Cafe yang lain yuk!</h5>
+        <a href="/cafe" class="fw-bold text-secondary">Kembali Ke Halaman</a>.
+      </div>
+    </div>
+  </div>
+</section>
+<? } else { ?>
+<section class="deskripsi">
+  <input type="hidden" class="id-cafe" value="<?= caves.idCafe ?>" />
+  <div class="container">
+    <div class="row">
+      <div class="col-md-5">
+        <div class="image">
+          <img src="/img/cafe/<?= caves.gambar[1].namaGambar ?>" alt="cafe detail1" />
+        </div>
+      </div>
+      <div class="col-md-7 pt-5">
+        <h1 class="namaCafe"><?= caves.nama ?></h1>
+        <h5 class="alamat"><?= caves.alamat ?></h5>
+        <h3 class="mt-4">Fasilitas</h3>
+        <div class="fasilitas">
+          <? caves.fasilitas.forEach((el)=>{ ?>
+          <div class="kotak">
+            <img src="/icon/<?= el.fasilitasIcon ?>" alt="<?= el.fasilitasJudul ?>" class="img-fluid" />
+            <span class="d-block"><?= el.fasilitasJudul ?></span>
+          </div>
+          <? }) ?>
+        </div>
+        <input type="hidden" class="jam-buka" value="<?= caves.jamBuka ?>" />
+        <input type="hidden" class="jam-tutup" value="<?= caves.jamTutup ?>" />
+        <h5 class="mt-3 jambuka">
+          <i class="bi bi-clock me-3"></i
+          ><?= caves.jamBuka ?>
+          -
+          <?= caves.jamTutup ?>
+          WIB
+        </h5>
+        <div class="row mt-4 ulasan">
+          <div class="col-auto">
+            <p>
+              <span>5.0</span>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </p>
+          </div>
+          <div class="col">12 Ulasan</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="tempatduduk">
+  <div class="container">
+    <h3 class="text-capitalize fw-bold">pilihan kapasitas pesanan anda</h3>
+    <p class="jumlahKeranjang">
+      <span class="fw-bold"><?= (formCapacities && formFoods) ? formFoods.length + 1 : (formCapacities && !formFoods) ? '1' : '0' ?></span> Pesanan Dalam Keranjang
+    </p>
+    <? if (formCapacities){ ?>
+    <p class="alert alert-danger">Kamu sudah Memiliki Pesanan Dalam Keranjang, Apabila kamu memilih Kapasitas di Cafe ini , maka Pesanan Mu dalam Keranjang akan Otomatis Terhapus</p>
+    <? } ?>
+
+    <? capacities.forEach((el)=>{ ?>
+    <div class="kapasitas" data-bs-toggle="modal" data-bs-target="#formPesan">
+      <div class="overlay" kategori="<?= el.kapKategori ?>" jumlah="<?= el.jumlah ?>" harga="<?= el.harga ?>"></div>
+      <div class="icon text-center my-auto">
+        <img src="/icon/conversation.png" alt="kapasitas" class="img-fluid" />
+      </div>
+      <div class="kategori">
+        <h4>
+          Kapasitas
+          <?= el.kapKategori ?>
+          Orang
+        </h4>
+        <span><?= el.deskripsi ?></span>
+      </div>
+      <input type="hidden" class="total-kapasitas" value="<?= el.jumlah ?>" />
+      <h3 class="tersedia">Tersedia</h3>
+      <h3 class="pesan-tempat">Pesan</h3>
+      <input type="hidden" class="harga-kapasitas" value="<?= el.harga ?>" />
+      <h3 class="harga">
+        Rp.
+        <?= el.harga ?>
+      </h3>
+    </div>
+    <? }) ?>
+  </div>
+</section>
+<? } ?>
+<!-- Modal -->
+<div class="modal fade" id="formPesan" tabindex="-1" aria-labelledby="formPesanLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title fs-4" id="formPesanLabel">Form Pemesanan</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form action="/cafe/details" method="post">
+        <input type="hidden" name="idcafe" value="<?= (caves) ? caves.idCafe : '' ?>" />
+        <input type="hidden" name="iduser" value="<?= (dataUser) ? dataUser.id : '' ?>" />
+        <input type="hidden" name="kapkategori" class="kapkategori" value="" />
+        <input type="hidden" name="kapkategorilama" class="kapkategorilama" value="<?= (formCapacities) ? formCapacities.kapKategori : '' ?>" />
+        <input type="hidden" class="waktuPesan" value="<?= tanggalCheckout ?>" />
+
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="kapasitas" class="form-label">Kapasitas</label>
+            <div class="kotak">1-3 Orang</div>
+          </div>
+          <div class="mb-3">
+            <label for="namapemesan" class="form-label">Nama</label>
+            <input type="text" class="form-control" id="namapemesan" name="namapemesan" required />
+          </div>
+          <div class="mb-3">
+            <label for="tanggal" class="form-label">Tanggal</label>
+            <input type="date" class="form-control tanggal-pesan" id="tanggal" name="tanggalpesan" required />
+            <span class="info-tanggal"></span>
+          </div>
+          <div class="mb-3">
+            <label for="jam" class="form-label">Jam</label>
+            <input type="time" class="form-control jam-pesan" id="jam" name="jampesan" aria-describedby="emailHelp" required />
+            <span class="info-jam"></span>
+          </div>
+        </div>
+        <div class="mx-auto mb-4 text-center">
+          <button type="submit" class="btn btn-secondary px-4 fs-4 kirim-kapasitas">Simpan</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

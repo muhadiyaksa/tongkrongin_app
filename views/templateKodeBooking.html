@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- Font Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+    <style>
+      .header-booking {
+        width: 760px;
+        margin: 0 auto;
+        font-family: "Poppins", sans-serif;
+        font-size: 12px;
+        position: relative;
+      }
+      .header-booking p {
+        margin-bottom: 0;
+      }
+      .header-booking span {
+        text-transform: capitalize;
+      }
+      .header-booking .lunas {
+        border: 10px solid #48ff57;
+        width: 500px;
+        padding: 10px;
+        border-radius: 10px;
+        position: absolute;
+        top: 40%;
+        left: 15%;
+        z-index: -99;
+        transform: rotate(-45deg);
+        text-align: center;
+        color: #48ff57;
+        opacity: 0.3;
+      }
+      .header-booking .lunas h1 {
+        margin-bottom: 0;
+        font-size: 60px;
+        margin-top: 0;
+      }
+      .header-booking .cafe {
+        padding: 0px 15px;
+      }
+      .header-booking h5 {
+        font-size: 16px;
+        margin-top: 0;
+      }
+      .header-booking h5:nth-child(1) {
+        color: #0ab318;
+      }
+      .header-booking .kodebooking {
+        margin: 20px 15px;
+        padding: 10px 15px;
+        font-size: 42px;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        border-radius: 8px;
+        color: #474747;
+        font-weight: 500;
+        border: 2px solid #bbbbbb;
+      }
+      .header-booking .kodebooking p {
+        margin: 0;
+      }
+
+      .header-booking table {
+        margin-bottom: 20px;
+        padding: 0px 15px;
+      }
+      .header-booking table tr td {
+        padding: 2px 0px;
+      }
+      .header-booking table tr td:nth-child(1) {
+        width: 30px;
+        font-weight: 600;
+      }
+      .header-booking .cafe table tr td:nth-child(1) {
+        width: 100px;
+        font-weight: 600;
+      }
+
+      .header-booking ul {
+        list-style: none;
+        border: 1px solid #949494;
+        padding-left: 0;
+        border-radius: 10px;
+        overflow: hidden;
+      }
+      .header-booking li {
+        list-style: none;
+        border-bottom: 1px solid #949494;
+      }
+      .header-booking li.first {
+        background-color: #f8f8f8;
+      }
+      .header-booking li.last {
+        border-bottom: 0px solid #949494;
+      }
+      .header-booking li h5 {
+        padding: 10px 15px;
+        margin-bottom: 0;
+        display: inline-block;
+      }
+
+      .header-booking .catatan {
+        color: #474747;
+        margin-top: 20px;
+        margin-bottom: 50px;
+      }
+      .header-booking .catatan p {
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="header-booking">
+      <div class="header">
+        <h1>TONGKRONGIN</h1>
+        <p>Disetujui Oleh Pihak Penerbit</p>
+      </div>
+      <div class="lunas">
+        <h1>TERVERIFIKASI</h1>
+      </div>
+
+      <ul>
+        <li>
+          <h5>KODE BOOKING</h5>
+          <div class="kodebooking">
+            <p>{{ formCheckout.kodeBooking }}</p>
+          </div>
+        </li>
+        <li>
+          <h5>Tongkrongin</h5>
+          <h5>Dinyatakan Pembayaran telah terverifikasi Di</h5>
+          <div class="cafe">
+            <table>
+              <tr>
+                <td><span>Nama Cafe</span></td>
+                <td><span>:</span></td>
+                <td><span> {{ caves.nama }}</span></td>
+              </tr>
+              <tr>
+                <td><span>Alamat</span></td>
+                <td><span>:</span></td>
+                <td><span>{{ caves.alamat }}</span></td>
+              </tr>
+              <tr>
+                <td><span>Kategori</span></td>
+                <td><span>:</span></td>
+                <td><span class="text-capitalize">{{ caves.kategori }}</span></td>
+              </tr>
+            </table>
+          </div>
+        </li>
+
+        <li>
+          <div class="tatacara">
+            <h5>Tata Cara</h5>
+            <table>
+              <tr>
+                <td>1.</td>
+                <td>Ingat dan Simpan File Kode Booking ini Di perangkat Seluler Kamu, sebagai verifikasi tempat saat di Cafe nanti</td>
+              </tr>
+              <tr>
+                <td>2.</td>
+                <td>Datang Ke Cafe Tujuan dengan maksimal keterlambatan <strong>15-25 menit</strong>, apabila terlambat maka dapat melakukan proses refund apabila tempat yang disediakan sudah Penuh.</td>
+              </tr>
+              <tr>
+                <td>3.</td>
+                <td>Datang ke cafe yang dituju maksimal keterlambatan <strong>15 menit</strong> , apabila terlambat maka dapat melakukan proses refund apabila tempat yang disediakan sudah Penuh.</td>
+              </tr>
+              <tr>
+                <td>4.</td>
+                <td>Tunjukan <strong>kode boking </strong> yang anda dapat untuk melakukan verifikasi pemesanan di tempat sesuai waktu yang anda pesan</td>
+              </tr>
+              <tr>
+                <td>5.</td>
+                <td>Selesai</td>
+              </tr>
+            </table>
+          </div>
+        </li>
+      </ul>
+
+      <div class="catatan">
+        <p>*Terimakasih Sudah Memesan Di tongkrongin</p>
+        <p>*Pembayaran ini diawasi oleh Tongkrongin , Laporkan keluhan apabila ada masalah dalam transaksimu</p>
+      </div>
+    </section>
+  </body>
+</html>

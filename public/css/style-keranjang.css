@@ -1,0 +1,291 @@
+body {
+  color: #474747;
+}
+.displayNone {
+  display: none;
+}
+input.form-check-input {
+  font-size: 18px;
+  border: 1px solid #3a3a3a;
+}
+section.keranjang {
+  margin: 50px 0px;
+}
+section.keranjang .tambah-pesanan a {
+  background-color: #474747;
+  font-family: "Poppins", sans-serif;
+  font-size: 13px;
+}
+section.keranjang .kadaluarsa {
+  font-family: "Poppins", sans-serif;
+  font-size: 13px;
+  margin-top: 20px;
+}
+
+section.keranjang .judul {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  color: #474747;
+  display: none;
+  border-top: 1px solid #cccccc;
+  border-bottom: 1px solid #cccccc;
+  padding: 10px 0px;
+}
+
+section.keranjang .makanan {
+  padding-top: 20px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+section.keranjang .tempat {
+  margin-top: 30px;
+  background-color: #f8f8f8d2;
+  border-radius: 8px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+section.keranjang .tempat button {
+  font-family: "Poppins", sans-serif;
+}
+section.keranjang .kolomgrid {
+  display: grid;
+  grid-template-columns: 0.5fr 2fr 2fr 0.5fr;
+  grid-template-rows: 1fr 0.5fr;
+  grid-template-areas:
+    "satu dua dua dua"
+    "empat empat tiga lima";
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0px;
+  row-gap: 10px;
+  align-items: center;
+}
+section.keranjang .kolomgrid .detail-kapasitas {
+  background-color: #4f4f4f;
+  border: 0px solid white;
+  padding: 2px 14px;
+  color: white;
+  font-size: 13px;
+}
+
+section.keranjang .checkbox {
+  grid-area: satu;
+}
+section.keranjang .pesanan {
+  color: #474747;
+  grid-area: dua;
+}
+section.keranjang .pesanan .image {
+  background-color: white;
+  height: 100px;
+  width: auto;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 8px;
+  border: 1px solid #dadada;
+  display: flex;
+  align-items: center;
+}
+
+section.keranjang .jumlah {
+  color: #474747;
+  grid-area: tiga;
+  font-family: "Poppins", sans-serif;
+  font-size: 13px;
+  margin-left: auto;
+  padding-right: 20px;
+}
+section.keranjang .harga {
+  color: #474747;
+  font-family: "Poppins", sans-serif;
+  padding-left: 5px;
+  grid-area: empat;
+}
+section.keranjang .harga h4 {
+  font-size: 18px;
+}
+section.keranjang .hapus {
+  padding-right: 5px;
+  grid-area: lima;
+  text-align: end;
+  margin-top: -5px;
+}
+section.keranjang .hapus img {
+  cursor: pointer;
+}
+section.keranjang .makanan .detailjudul {
+  display: block;
+}
+section.keranjang .makanan .food {
+  border-top: 1px solid #cccccc;
+  padding-top: 20px;
+}
+section.keranjang .kolomgrid .quantity-cart {
+  display: inline-block;
+  grid-area: tiga;
+  justify-self: end;
+  padding-right: 20px;
+}
+
+section.keranjang .pesanan h4 {
+  font-weight: 600;
+}
+section.keranjang .pesanan span {
+  font-size: 13px;
+}
+section.keranjang .pesanan p {
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+}
+
+section.keranjang .hapus img {
+  max-height: 25px;
+}
+
+section.keranjang .total {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background-color: #f5f5f5;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "total bayar";
+  align-items: center;
+  padding: 0px 20px;
+  border-top: 1px solid #eeeeee;
+}
+section.keranjang .total h3 {
+  font-family: "Poppins", sans-serif;
+  color: #4f4f4f;
+  font-weight: 600;
+  font-size: 18px;
+  grid-area: total;
+  text-align: start;
+}
+section.keranjang .total input {
+  grid-area: bayar;
+  width: 90%;
+  margin-bottom: 20px;
+  margin-left: auto;
+}
+section.keranjang .total input.bayar-keranjang {
+  background-color: #474747;
+  font-family: "Poppins", sans-serif;
+  font-size: 13px;
+}
+section.footer {
+  display: none;
+}
+.modal {
+  font-family: "Poppins", sans-serif;
+}
+.modal .table th {
+  color: #4f4f4f !important;
+}
+section.keranjang .catatan {
+  margin-bottom: 100px;
+}
+section.keranjang .catatan input {
+  padding: 10px 5px;
+  font-family: "Poppins", sans-serif;
+  font-size: 13px;
+}
+section.keranjang .catatan input:focus {
+  outline: none;
+}
+
+@media (min-width: 768px) {
+  input.form-check-input {
+    font-size: 24px;
+  }
+  section.keranjang .tambah-pesanan a {
+    font-size: 16px;
+  }
+  section.keranjang .kadaluarsa {
+    font-size: 16px;
+  }
+
+  section.keranjang .judul {
+    display: flex;
+    flex-direction: row;
+    font-size: 16px;
+  }
+
+  section.keranjang .makanan .detailjudul {
+    display: none;
+  }
+  section.keranjang .pesanan p:nth-child(2) {
+    font-size: 14px;
+    padding-right: 100px;
+  }
+
+  section.keranjang .kolomgrid {
+    grid-template-columns: 0.5fr 4fr 1.2fr 1.2fr 0.5fr;
+    grid-template-areas: "satu dua tiga empat lima ";
+    grid-template-rows: 1fr;
+    justify-content: space-between;
+    align-items: center;
+    margin: 30px 0px;
+  }
+  section.keranjang .kolomgrid .quantity-cart {
+    justify-self: start;
+  }
+  section.keranjang .total {
+    position: relative;
+    background-color: white;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+      "null total"
+      "null bayar";
+    box-shadow: none;
+    margin-bottom: 100px;
+    border-top: 0px solid #eeeeee;
+  }
+  section.keranjang .total h3 {
+    font-weight: 600;
+    font-size: 24px;
+    text-align: end;
+  }
+  section.keranjang .total input {
+    width: 30%;
+  }
+  section.keranjang .jumlah {
+    margin-left: 0px;
+  }
+  section.keranjang .hapus img {
+    margin-top: -10px;
+  }
+  section.keranjang .catatan {
+    width: 50%;
+    margin-bottom: 0;
+    margin-top: 20px;
+    margin-left: auto;
+  }
+  section.keranjang .catatan input {
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: 1px solid #c7c7c7;
+  }
+  section.footer {
+    display: block;
+  }
+  section.keranjang .harga h4 {
+    font-size: 22px;
+  }
+}
+/* 
+@media (max-width: 575.98px) {
+ 
+  
+ 
+  
+  
+  
+  
+} */

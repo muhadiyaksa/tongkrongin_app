@@ -1,0 +1,265 @@
+section.makanan {
+  margin: 20px 0px;
+}
+section.makanan .kapasitas,
+section.makanan .menu {
+  border: 1px solid rgba(128, 118, 118, 0.3);
+  border-radius: 8px;
+  padding: 10px 10px;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+section.makanan .menu {
+  background-color: rgba(112, 112, 112, 0.05);
+  transition: 0.3s;
+}
+.foodactive {
+  border-left: 6px solid #94ff8a !important;
+  box-sizing: border-box !important;
+}
+section.makanan .kapasitas {
+  color: #4f4f4f;
+  background-color: #e7ffe1;
+}
+
+section.makanan .kapasitas h4 {
+  font-family: "Neucha", sans-serif;
+}
+section.makanan .menu {
+  color: #4f4f4f;
+  display: grid;
+  position: relative;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 0.6fr;
+  grid-template-areas:
+    "image makanan makanan"
+    "image makanan  makanan"
+    "harga null  pesan";
+}
+
+section.makanan .menu .image {
+  grid-area: image;
+  width: auto;
+  height: 100px;
+  overflow: hidden;
+  border-radius: 8px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  position: relative;
+  border: 1px solid rgba(128, 118, 118, 0.3);
+}
+section.makanan .pesanan .kapasitas .image {
+  background-color: white;
+  margin-left: 10px;
+  border-radius: 5px;
+  height: 75px;
+  width: 100px;
+  overflow: hidden;
+  border: 1px solid rgba(128, 118, 118, 0.3);
+  display: flex;
+  align-items: center;
+  padding: 0;
+}
+section.makanan .pesanan .kapasitas .image img {
+  width: 100%;
+}
+section.makanan .menu .image img {
+  width: 100%;
+}
+section.makanan .menu .makanan {
+  grid-area: makanan;
+  padding-left: 10px;
+}
+section.makanan .menu .makanan h4 {
+  font-weight: 600;
+}
+section.makanan .menu .makanan span {
+  font-family: "Poppins", sans-serif;
+  font-size: 12px;
+}
+
+section.makanan .menu .tersedia {
+  display: none;
+  grid-area: tersedia;
+  text-align: end;
+  color: #2fe41e;
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+  font-size: 18px;
+}
+section.makanan .menu .pesan {
+  grid-area: pesan;
+  display: block;
+  background-color: #94ff8a;
+  border-radius: 5px;
+  text-align: center;
+  width: 100%;
+  border: none;
+  font-size: 18px;
+  padding: 5px 0px;
+  animation-name: muncul;
+  animation-duration: 0.3s;
+  align-self: flex-start;
+  margin: 0px 5px;
+  margin-top: 10px;
+}
+
+section.makanan .menu .quantity {
+  grid-area: pesan;
+  align-self: flex-end;
+  text-align: end;
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+section.makanan .menu .harga {
+  font-size: 18px;
+  grid-area: harga;
+  margin-top: 10px;
+  font-weight: 600;
+  text-align: start;
+  align-self: flex-end;
+  font-family: "Poppins", sans-serif;
+}
+
+section.makanan .pesanan {
+  display: none;
+  font-family: "Poppins", sans-serif;
+}
+section.makanan .pesanan h4.subjudul {
+  font-size: 16px;
+}
+section.makanan .kolompesanan {
+  background-color: rgba(112, 112, 112, 0.3);
+  font-size: 14px;
+}
+section.makanan .jumlahpesanan {
+  background-color: #94ff8a;
+  width: 100%;
+  padding: 10px 15px;
+  border: 1px solid rgba(128, 118, 118, 0.3);
+  border-radius: 8px;
+  margin-bottom: auto;
+}
+
+section.makanan .jumlahpesanan .bayar {
+  display: block;
+  color: white;
+  text-align: end;
+  text-decoration: underline;
+}
+section.makanan .menu .quantity {
+  display: none;
+  text-align: end;
+}
+section.makanan .menu .quantity span {
+  font-size: 22px;
+  padding: 0px 10px;
+}
+
+section.makanan .menu span {
+  font-size: 14px;
+}
+.absolute-active {
+  position: absolute;
+  top: none;
+  bottom: 0;
+}
+.fixed-active {
+  position: fixed;
+  top: 0;
+  bottom: none;
+}
+.static-active {
+  position: static;
+  top: none;
+  bottom: none;
+}
+
+@keyframes muncul {
+  0% {
+    opacity: 0;
+    width: 20%;
+  }
+  100% {
+    opacity: 1;
+    width: 100%;
+  }
+}
+
+@keyframes geser {
+  to {
+    opacity: 1;
+    width: 100%;
+  }
+}
+
+.geser {
+  opacity: 0.2;
+  width: 10%;
+  animation: geser 0.5s forwards;
+}
+
+@media (min-width: 768px) {
+  section.makanan .jumlahpesanan {
+    background-color: white;
+    width: 100%;
+    padding: 10px 15px;
+  }
+
+  section.makanan {
+    margin: 50px 0px;
+  }
+  section.makanan .menu {
+    grid-template-columns: 1.2fr 1.5fr 0.8fr;
+    grid-template-rows: 1fr 0.5fr 0.5fr;
+    grid-template-areas:
+      "image makanan  tersedia"
+      "image makanan  tersedia"
+      "image harga  pesan";
+  }
+
+  section.makanan .menu .harga {
+    text-align: start;
+    align-self: flex-end;
+    font-size: 22px;
+    padding-left: 10px;
+  }
+  section.makanan .menu .tersedia {
+    display: block;
+  }
+  section.makanan .kapasitas h4 {
+    font-size: 18px;
+    font-size: 600;
+  }
+  section.makanan .pesanan {
+    position: relative;
+    display: block;
+  }
+
+  section.makanan .pesanan .list-group {
+    width: 100%;
+  }
+  section.makanan .jumlahpesanan .bayar {
+    display: none;
+  }
+  section.makanan .menu .makanan span {
+    font-size: 14px;
+  }
+  section.makanan .menu .image {
+    height: 150px;
+  }
+}
+@media (min-width: 992px) {
+  section.makanan .menu .harga {
+    font-size: 20px;
+    font-weight: 500;
+  }
+  section.makanan .kapasitas h4 {
+    font-size: 22px;
+  }
+  section.makanan .menu .makanan h4 {
+    font-size: 24px;
+  }
+}

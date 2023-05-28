@@ -1,0 +1,62 @@
+<section class="regist">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 mx-auto konten">
+        <h2 class="text-center fw-bold">Tongkrongin</h2>
+
+        <? if (typeof errors != 'undefined') { ?>
+        <div class="alert alert-danger" role="alert">
+          <ul>
+            <? errors.forEach(error=>{ ?>
+            <li>
+              <?= error.msg ?>
+            </li>
+            <? }) ?>
+          </ul>
+        </div>
+        <? } ?>
+
+        <div class="kotak text-center">
+          <img src="/icon/googleIcon.svg" alt="googleIcon" />
+          <span>Sign In With Google</span>
+        </div>
+        <div class="atau">
+          <div class="garis"></div>
+          <span>Atau</span>
+          <div class="garis"></div>
+        </div>
+
+        <form method="post" action="/regist">
+          <div class="mb-3 form">
+            <label for="nama" class="form-label">Nama Lengkap</label>
+            <input type="text" class="form-control ps-5" id="nama" name="nama" placeholder="Nama Lengkap Anda" aria-describedby="emailHelp" />
+            <i class="bi bi-person"></i>
+          </div>
+          <div class="mb-3 form">
+            <label for="email" class="form-label">Email address</label>
+            <input type="email" class="form-control ps-5" id="email" name="email" placeholder="Masukan Email" aria-describedby="emailHelp" />
+            <i class="bi bi-person-square"></i>
+          </div>
+          <div class="mb-3 form">
+            <label for="notelp" class="form-label">Nomor Telepon</label>
+            <input type="number" class="form-control ps-5" id="notelp" name="notelp" placeholder="Masukan Nomor Telepon" aria-describedby="emailHelp" />
+            <i class="bi bi-telephone"></i>
+          </div>
+          <div class="mb-3 form">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control ps-5" id="password" name="password" placeholder="Password" />
+            <i class="bi bi-lock"></i>
+          </div>
+          <div class="mb-3 form">
+            <label for="passwordChecked" class="form-label">Konfirmasi Password</label>
+            <input type="password" class="form-control ps-5" id="passwordChecked" name="passwordChecked" placeholder="Masukkan Ulang Password Anda" />
+            <i class="bi bi-lock"></i>
+          </div>
+
+          <button type="submit" class="btn btn-light w-100 fs-5 fw-bold mt-4">Daftar</button>
+          <p class="text-center mt-3">Sudah Punya Akun? <a href="/login">Masuk Disini</a></p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,196 @@
+<? if(!user) {?>
+  <section class="wrong">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <img src="/img/wrong.png" alt="Wrong" class="img-fluid" />
+          <a href=""></a>
+        </div>
+        <div class="col-md-6 my-auto">
+          <h1 class="fw-bold text-secondary">Ups!, Data User tersebut Tidak Ada!</h1>
+          <h4 class="text-secondary mb-4">kamu gaboleh akses akun user lain yaa!^_^</h4>
+          <a href="/user/<?= dataUser.id ?>" class="fw-bold text-secondary">Kembali Ke Halaman</a>.
+        </div>
+      </div>
+    </div>
+  </section>
+<? } else { ?>
+<section class="user-profile">
+  <div class="container">
+    <!-- <a href="/home">
+      <h2 class="fw-bold"><i class="bi bi-arrow-left-circle-fill me-4"></i> Profile</h2>
+    </a> -->
+
+    <? if(msg.length !== 0) {?>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      <?= msg  ?>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <? } ?>
+
+    <div class="row">
+      <div class="col-md">
+        <div class="row identitas">
+          <div class="col-4 image">
+            <? if(files){ ?> 
+            <img src="/image/<?= files.filename ?>" alt="Img Profile" class="img-fluid" />
+            <? } ?>
+          </div>
+          <div class="col">
+            <h3 class="text-capitalize"><?= user.nama ?></h3>
+            <h5><?= user.email ?></h5>
+            <form action="/logout?_method=DELETE" method="post">
+              <button class="btn btn-outline-0 text-danger m-0 p-0 logout" type="submit"><i class="bi bi-box-arrow-right me-2"></i>Logout</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-md button">
+
+        <a href="/user/update/<?= user.id?>"> <button class="btn  rounded edit">Edit Profile</button></a>
+        <a href="/user/password/<?= user.id?>"> <button class="btn  rounded edit">Edit Password</button></a>
+      </div>
+      <div class="user-settings">
+        
+        <h2>Pengaturan Akun</h2>
+        <div class="akun">
+          <a href="/user/update/<?= user.id?>"> 
+            <button class="btn text-start w-100">
+              <table>
+                <tr>
+                  <td>
+                    <i class="bi bi-pencil-square "></i> 
+                  </td>
+                  <td>
+                    Ubah Profile
+                  </td>
+                </tr>
+              </table>
+            </button> 
+          </a>
+          <a href="/user/password/<?= user.id?>">
+            <button class="btn text-start w-100"> 
+              <table>
+                <tr>
+                  <td>
+                    <i class="bi bi-lock-fill "></i>
+                  </td>
+                  <td>
+                    Ubah Password
+                  </td>
+                </tr>
+              </table>
+            </button>
+          </a>
+          <form action="/logout?_method=DELETE" method="post">
+            <button class="btn text-start w-100 text-danger" type="submit">
+              <table>
+                <tr>
+                  <td>
+                    <i class="bi bi-box-arrow-right"></i>
+                  </td>
+                  <td>
+                    Keluar Akun
+                  </td>
+                </tr>
+              </table>
+            </button>
+          </form>
+        </div>
+        </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="riwayat">
+  <div class="container">
+    <h2 class="fw-bold">Riwayat Transaksi</h2>
+    <? if(formCheckout.length === 0){ ?>
+      <div class="riwayat-null">
+        <p class="m-0">Kamu Belum melakukan Pesanan sama sekali</p>
+      </div>
+    <? } else{ ?>
+    <? formCheckout.forEach((el, i)=>{ ?>
+      <? if(!el.kodeInv){ ?>
+        <div class="riwayat-user">
+          <div class="overlay belumbayar">
+            <a href="/cart">Yuk Bayar</a> 
+          </div>
+          <div class="image">
+            <img src="/img/cafe/<?= caves[i].gambar[1].namaGambar ?>" alt="Janji Jiwa" class="img-fluid">
+          </div>
+          <div class="nama">
+            <h3><?= caves[i].nama ?></h3>
+            <p class="alamat"><?= caves[i].alamat ?></p>
+            <p class="fw-bold mt-2 mb-2">Kapasitas <?= formCap[i].kapKategori ?> Orang</p>
+            <a href="/cart" class="kategori">Yuk Bayar</a>
+          </div>
+          <div class="tanggal">
+            <input type="hidden" class="status-pesanan" value="<?= el.status ?>">
+            <h5 class="status-loc"><?= el.status ?></h5>
+            <p class="text-capitalize m-0"><?= el.tanggalPesan ?></p>
+          </div>
+        </div>
+      <? }else{ ?>
+        <div class="riwayat-user">
+          <div class="overlay">
+              <a href="/invoice/<?= el.kodeInv ?>">Lihat Invoice & Kode Booking</a> 
+          </div>
+          <div class="image">
+            <img src="/img/cafe/<?= caves[i].gambar[1].namaGambar ?>" alt="Janji Jiwa" class="img-fluid">
+          </div>
+          <div class="nama">
+            <h3><?= caves[i].nama ?></h3>
+            <p class="alamat"><?= caves[i].alamat ?></p>
+            <p class="fw-bold mt-2 mb-2">Kapasitas <?= formCap[i].kapKategori ?> Orang</p>
+            <a href="/invoice/<?= el.kodeInv ?>" class="kategori">Lihat Invoice & Kode Booking</a>
+          </div>
+          <div class="tanggal">
+            <input type="hidden" class="status-pesanan" value="<?= el.status ?>">
+            <h5 class="status-loc"><?= el.status ?></h5>
+            <p class="text-capitalize m-0"><?= el.tanggalPesan ?></p>
+          </div>
+        </div>
+      <? } ?>
+      
+      <? }) ?>
+      <? } ?>
+    </div>
+    
+  </div>
+</section>
+<? } ?>
+
+<!-- ERROR HANDLING -->
+<div class="error-handling-area">
+  <div class="konten-upload" >
+    <div class="hasil-file">
+    </div>
+    <h2 class="mb-4"></h2>
+    <p></p>
+    <label for="upload-photo"></label>
+    <input type="file" name="file" id="upload-photo" class="upload-photo"/>
+  </div>
+  <div class="notif-area my-3"></div>
+  <div class="kirim">
+      <input type="submit" value="Kirim"></input>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Kode Booking</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body booking">
+        <i class="bi bi-hourglass-split"></i>
+        <p>Kode Booking Mu sedang tahap proses, tunggu beberapa saat</p>
+        <a href="" >Download</a>
+      </div>
+    </div>
+  </div>
+</div>

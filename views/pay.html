@@ -1,0 +1,269 @@
+<!-- https://www.saidalfaruq.net/artikel/upload-file-menggunakan-drag-dan-drop-dengan-javascript-dan-php-s7y6fz8z -->
+<!-- https://www.w3schools.com/nodejs/nodejs_uploadfiles.asp -->
+<section class="header-pay">
+ <div class="container">
+    <h2><a href="/cart" class="text-secondary me-3"><i class="bi bi-arrow-left-circle-fill"></i></a> Pembayaran</h2>
+ </div>
+</section>
+
+<section class="pay">
+
+  <div class="container">
+    
+    <div class="row">
+      <div class="col-md-6">
+        <h2 class="fw-bold">Detail</h2>
+        <div class="identitas">
+          <table>
+            <tr>
+              <td>Total Pembayaran</td>
+              <td>:</td>
+              <input type="hidden" class="total-pembayaran" value="<?= formCheckout.total ?>">
+              <td><span><strong class="totalbayar"></strong> </span></td>
+            </tr>
+            <tr>
+              <td>Tanggal Checkout</td>
+              <td>:</td>
+              <td><span class="text-capitalize"><strong><?= formCheckout.tanggalCheckout ?></strong></span></td>
+            </tr>
+          </table>
+        </div>
+     
+        <div class="kotak ">
+          <i class="bi bi-exclamation-circle-fill me-3"></i>
+          <input type="hidden" class="menit-pesan" value="<?= formCheckout.jamCheckout.split(':')[1] ?>">
+          <h5 class="d-inline-block">Lakukan Pembayaran sebelum <span class="text-capitalize"><?= `${formCheckout.tanggalCheckout} -  ${Number(formCheckout.jamCheckout.split(':')[0]) + 1}:`  ?><span class="menit-wadah"></span> WIB</span></h5>
+        </div>
+
+        <div class="detail-pesanan">
+          <ul class="list-group">
+            <li class="list-group-item">Rincian Pesanan Anda</li>
+            <li class="list-group-item">
+              <h4 class="subjudul">Tempat</h4>
+              <div class="kapasitas">
+                <div class="row">
+                  <div class="col-3">
+                    <img src="/img/cafe/<?= caves.gambar[1].namaGambar ?>" alt="Cafe" class="img-fluid cafe mt-2" />
+                  </div>
+                  <div class="col">
+                    <table class="table table-sm" >
+                      <tr>
+                        <td><span>Cafe</span></td>
+                        <td><span>:</span></td>
+                        <td><span class="text-capitalize"> <?= caves.nama ?> </span></td>
+                      </tr>
+                      <tr>
+                        <td><span>Alamat Cafe</span></td>
+                        <td><span>:</span></td>
+                        <td><span><?= caves.alamat ?></span></td>
+                      </tr>
+                      <tr>
+                        <td><span>Kategori</span></td>
+                        <td><span>:</span></td>
+                        <td><span class="text-capitalize"><?= caves.kategori ?></span></td>
+                      </tr>
+                      <tr>
+                        <td><span>Kapasitas</span></td>
+                        <td><span>:</span></td>
+                        <td><span class="text-capitalize"><?= formCapacities.kapKategori ?></span></td>
+                      </tr>
+                      <tr>
+                        <td><span>Atas Nama</span></td>
+                        <td><span>:</span></td>
+                        <td><span class="text-capitalize"><?= formCapacities.namaPemesan ?></span></td>
+                      </tr>
+                      <tr>
+                        <td><span>Tanggal Booking</span></td>
+                        <td><span>:</span></td>
+                        <td><span class="text-capitalize"><?= formCapacities.tanggalPesan ?></span></td>
+                      </tr>
+                      <tr>
+                        <td><span>Jam Booking</span></td>
+                        <td><span>:</span></td>
+                        <td><span><?= formCapacities.jamPesan ?> WIB</span></td>
+                      </tr>
+                      <tr>
+                        <td><span>Harga</span></td>
+                        <td><span>:</span></td>
+                        <td><span>Rp. <?= formCapacities.harga ?></span></td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <h4 class="subjudul">Makanan</h4>
+              <? formFoods.forEach((el,i)=>{ ?>
+              <div class="kapasitas">
+                <div class="row">
+                  <div class="col-3 ">
+                    <div class="image">
+                      <img src="/img/food/<?= foods[i].gambar ?>" alt="Food" class="img-fluid " />
+                    </div>
+                  </div>
+                  <div class="col">
+                    <table class="table table-sm">
+                      <tr>
+                        <td>Menu</td>
+                        <td>:</td>
+                        <td><span> <?= foods[i].namaMenu ?> </span></td>
+                      </tr>
+                      <tr>
+                        <td>Quantity</td>
+                        <td>:</td>
+                        <td><span><?= el.quantity ?></span></td>
+                      </tr>
+                      <tr>
+                        <td>Harga</td>
+                        <td>:</td>
+                        <td><span>Rp. <?= el.harga ?></span></td>
+                      </tr>
+                     
+                    </table>
+                  </div>
+                </div>
+              </div>  
+              <? }) ?>
+            </li>
+            <li class="list-group-item">
+              <h4 class="subjudul">Catatan</h4>
+              <input type="text" class="form-control mb-2" disabled value="<?= (formCheckout.catatan) ? formCheckout.catatan : '-' ?>" >
+            </li>
+        </div>
+        
+      </div>
+      <div class="col-md-1"></div>
+      <div class="col-md-5 alamat">
+        <h2 class="fw-bold ">Alamat Transfer</h2>
+        <div class="identitas">
+          <table class="mb-3">
+            <tr>
+              <td>Nama Rekening</td>
+              <td>:</td>
+              <td><span class="nama-rekening"><strong><?= caves.rekening[0].namaRekening ?></strong></span></td>
+            </tr>
+            <tr>
+              <td>Nomor Rekening</td>
+              <td>:</td>
+              <td><span class="nomor-rekening"><strong> <?= caves.rekening[0].nomorRekening ?></strong> </span></td>
+            </tr>
+            <tr>
+              <td>Nama Bank</td>
+              <td>:</td>
+              <input type="hidden" class="nama-bank" value="<?= caves.rekening[0].namaBank ?>">
+              <td><span class="nama-bank"><strong><?= caves.rekening[0].namaBank ?></span></td>
+            </tr>
+           
+          </table>
+          <span class="pt-3 "><a href="" class="text-dark" data-bs-toggle="modal" data-bs-target="#gantiBank"><i class="bi bi-box-arrow-in-down-left"></i> Ubah Akun Bank</a></span>
+          <div class="text-center img-bank">
+            <img src="/img/bank/<?= caves.rekening[0].namaBank ?>.png" alt="logo Bank" class="img-fluid text-center" />
+          </div>
+        </div>
+        
+        <div class="unggah-button text-center">
+          <button class="btn btn-dark px-4 py-2 " data-bs-toggle="modal" data-bs-target="#modalUpload">Unggah Bukti Pembayaran</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</section>
+
+<!-- Modal Ganti Pilihan Bank -->
+<div class="modal fade" id="gantiBank" tabindex="-1" aria-labelledby="gantiBankLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      
+      <div class="modal-body">
+        <div class="d-flex mb-4">
+          <h5 class="modal-title" id="gantiBankLabel">Pilih Bank</h5>
+          <button type="button" class="btn-close ms-auto" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="jenis-bank">
+          <? caves.rekening.forEach(el=>{ ?>
+            <div class="item-bank" >
+              <div class="overlay" namaRekening="<?= el.namaRekening ?>" nomorRekening="<?= el.nomorRekening ?>" namaBank="<?= el.namaBank ?>" data-bs-dismiss="modal" aria-label="Close"></div>
+              <img src="/img/bank/<?= el.namaBank ?>.png" alt="<?= el.namaBank ?>" class="img-fluid" >
+            </div>
+          <? }) ?>
+        </div>
+        
+      </div>
+     
+     
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal Upload Bukti-->
+<div class="modal fade" id="modalUpload" tabindex="-1" aria-labelledby="modalUploadLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="header mb-3">
+          <div class="row">
+            <div class="col">
+              <h5 class="modal-title" id="modalUploadLabel">Unggah Foto</h5>
+            </div>
+            <div class="col text-end">
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+          </div>
+        </div>
+        <div class="konten-upload" >
+            <form action="/payment" method="POST" enctype="multipart/form-data">
+              <input type="hidden" name="iduser" value="<?= dataUser.id ?>">
+              <input type="hidden" name="idcafe" value="<?= formCapacities.idCafe ?>">
+              <input type="hidden" name="namaBank"  class="namabank"  value="<?= caves.rekening[0].namaBank ?>">
+              <input type="hidden" name="namaRekening" class="namarekening" value="<?= caves.rekening[0].namaRekening ?>">
+              <input type="hidden" name="nomorRekening" class="nomorrekening" value="<?= caves.rekening[0].nomorRekening ?>">
+              <div class="hasil-file">
+              </div>
+              <h2 class="mb-4"><i class="bi bi-file-earmark-plus"></i></h2>
+              <p>Seret foto ke area ini (bisa lebih dari satu sekaligus) atau tekan tombol unggah dibawah ini. Pastikan foto telah memenuhi <strong>kualitas Tongkrongin (png , jpg , jpeg)</strong></p>
+              <label for="upload-photo">Unggah Foto</label>
+              <input type="file" name="file" id="upload-photo" class="upload-photo"/>
+              <input type="submit"  class="upload-button" />
+            </form>
+          </div>
+          <div class="notif-area my-3"></div>
+          <div class="kotak">
+            <div class="row">
+              <div class="col-1">
+                <i class="bi bi-exclamation-circle-fill fs-3"></i>
+              </div>
+              <div class="col-11">
+                Dengan Menekan tombol <strong>Kirim</strong> maka kamu sudah menyelesaikan Pembayaran
+              </div>
+            </div>
+            
+          </div>
+          <div class="kirim">
+            <div class="overlay-loc overlay-upload"></div>
+              <input type="submit" value="Kirim" class="upload-kirim"></input>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- 
+<div class="modal fade" id="uploadBukti" tabindex="-1" aria-labelledby="uploadBuktiLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="uploadBuktiLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">...</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div> -->
